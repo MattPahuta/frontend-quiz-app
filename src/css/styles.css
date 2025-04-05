@@ -1,0 +1,99 @@
+/* Reset and and Base Styles */
+@layer reset {
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+  }
+
+  html {
+    -moz-text-size-adjust: none;
+    -webkit-text-size-adjust: none;
+    text-size-adjust: none;
+  }
+
+  body,
+  h1,
+  h2,
+  h3,
+  h4,
+  p,
+  figure,
+  blockquote,
+  dl,
+  dd {
+    margin: 0;
+  }
+
+  [role='list'] {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  body {
+    min-block-size: 100vh;
+  }
+
+  h1,
+  h2,
+  h3,
+  button,
+  input,
+  label {
+    line-height: 1.1;
+  }
+
+  p,
+  li {
+    text-wrap: wrap;
+  }
+
+  img,
+  picture {
+    max-inline-size: 100%;
+    display: block;
+  }
+
+  input,
+  button,
+  textarea,
+  select {
+    font: inherit;
+  }
+}
+
+@layer base {
+  :root {
+    /* Font Family */
+    --ff-primary: "Rubik", sans-serif;
+    /* Font Sizes */
+    --fs-display: 9rem; /* 144px */
+    --fs-heading-large: ; /* 64px */
+    --fs-heading-xlarge: ; /* 40px */    
+    --fs-heading-medium: ; /* 36px */
+    --fs-heading-small: ; /* 28px */
+
+
+    --fs-body-medium: ; /* 24px */
+    --fs-body-small: ; /* 20px yes */
+    --fs-body-xsmall: ; /* 18px yes */
+    --fs-body-xxsmall: ; /* 14px yes */ 
+
+    /* Colors */
+    --clr-neutral-800: #313E51;
+    --clr-neutral-700: #3B4D66;
+    --clr-neutral-600: #626C7F;
+    --clr-nuetral-400: #ABC1E1;
+
+    --clr-neutral-200: #F4F6FA;
+    --clr-neutral-100: #FFFFFF;
+    --clr-primary-500: #A729F5;
+    --clr-success-500: #26D782;
+    --clr-alert-500: #EE5454;
+  }
+
+  html {
+    font-family: var(--ff-primary);
+  }
+}
