@@ -1,12 +1,15 @@
-
-import './css/styles.css'
+// import Quiz
+// import Header
+// import Start
+import Header from './components/Header';
+import Start from './components/Start';
 
 function App() {
 
   return (
     <>
-      <h1 className='heading-welcome'>Welcome to the <span>Frontend Quiz!</span></h1>
-      <p className='italic'>Pick a subject to get started.</p>
+      <Header />
+      <Start />
     </>
   )
 }

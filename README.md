@@ -10,7 +10,7 @@ This is a solution to the [Frontend quiz app challenge on Frontend Mentor](https
   - [Links](#links)
 - [My process](#my-process)
   - [Built with](#built-with)
-  - [What I learned](#what-i-learned)
+  - [Project Notes](#project-notes)
   - [Continued development](#continued-development)
   - [Useful resources](#useful-resources)
 - [Author](#author)
@@ -57,9 +57,15 @@ Users should be able to:
 - [React](https://reactjs.org/) - JS library
 
 
-### What I learned
+### Project notes
 
-Use this section to recap over some of your major learnings while working through this project. Writing these out and providing code samples of areas you want to highlight is a great way to reinforce your own knowledge.
+Start Menu Screen
+- Form with 4 buttons
+Question component
+- qustion number, question
+- progress slider
+- Form - radio inputs styled like buttons?, submit button
+
 
 To see how you can add code snippets, see below:
 
