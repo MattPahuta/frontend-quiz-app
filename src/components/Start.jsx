@@ -8,7 +8,7 @@ import a11yIcon from '../assets/icon-accessibility.svg';
 function Start() {
   return (
     <main>
-      <div className="wrapper grid-columns">
+      <div className="wrapper grid-columns welcome-grid">
         <div>
           <h1 className="heading-welcome">
             Welcome to the <span>Frontend Quiz!</span>
