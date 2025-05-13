@@ -78,7 +78,7 @@
     --fs-700: 2.5rem; /* 40px */
     --fs-display: 4rem; /* 64px */
     
-    @media (width > 40rem) {
+    @media (width > 37.5rem) {
       --fs-300: 1rem; /* 16px */
       --fs-450: 1.75rem; /* 28px */
       --fs-700: 4rem; /* 64px */
@@ -151,7 +151,7 @@
       --bg-button: var(--bg-button-dark);
       --bg-image: url('../assets/pattern-background-mobile-dark.svg');
 
-      @media (width > 40rem) {
+      @media (width > 37.5rem) {
         --bg-image: url('../assets/pattern-background-tablet-dark.svg');
       }
       @media (width > 70rem) {
@@ -174,7 +174,7 @@
     background-image: var(--bg-image);
     background-repeat: no-repeat;
 
-    @media (width > 40rem) {
+    @media (width > 37.5rem) {
       /* background-position: top left;
       background-size: 500px 500px; */
     }
@@ -214,7 +214,7 @@
     margin-inline: auto;
     padding-inline: var(--spacing-150);
 
-    @media (width > 40rem) {
+    @media (width > 37.5rem) {
       padding-inline: var(--spacing-400);
     }
   }
@@ -230,7 +230,7 @@
     padding: var(--spacing-150) var(--spacing-100);
   }
 
-  @media (width > 40rem) {
+  @media (width > 37.5rem) {
     .welcome-grid {
       gap: var(--spacing-400);
     }
@@ -239,6 +239,53 @@
 }
 
 @layer components {
+
+  .theme-toggle-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--spacing-050);
+
+    @media (width > 37.5rem) {
+      gap: var(--spacing-100);
+    }
+  }
+  .toggle-dark-mode {
+    appearance: none;
+    -webkit-appearance: none;
+    cursor: pointer;
+    position: relative;
+    border: none;
+    width: 32px;
+    height: 20px;
+    border-radius: 999px;
+    background-color: var(--clr-purple);
+
+    @media (width > 37.5rem) {
+      width: 48px;
+      height: 28px;
+    }
+  }
+
+  .toggle-dark-mode::after {
+    content: "";
+    position: absolute;
+    background-color: var(--clr-pure-white);
+    width: 12px;
+    height: 12px;
+    border-radius: 999px;
+    transition-property: left;
+    transition: 0.2s ease-in-out;
+    left: 4px;
+    top: 4px;
+
+    @media (width > 37.5rem) {
+      width: 20px;
+      height: 20px;
+    }
+
+  }
+
   button.button {
     border: none;
     background-color: var(--bg-button);
@@ -247,6 +294,7 @@
     display: inline-flex;
     align-items: center;
     justify-content: center;
+    gap: var(--spacing-100);
     border-radius: var(--spacing-075);
     padding: var(--spacing-075);
     font-size: var(--fs-450);
@@ -256,8 +304,9 @@
       border: 2px solid currentColor;
     }
 
-    @media (width > 40rem) {
+    @media (width > 37.5rem) {
       border-radius: var(--spacing-150);
+      gap: var(--spacing-200);
     }
 
     @media (width > 70rem) {
@@ -270,10 +319,10 @@
   }
 
   /* Handle icons and icon BGs */
+  /* ToDo: also for styling answer letters */
   button img.icon,
   input[type='radio'] {
     width: 40px;
-    margin-right: var(--spacing-100);
     padding: var(--spacing-025);
     border-radius: 6px;
 
@@ -292,13 +341,22 @@
     &.cat-a11y {
       background-color: var(--icon-bg__a11y);
     }
+
+    @media (width > 37.5rem) {
+      width: 56px;
+    }
   }
 
+  /* ToDo: make this generalized form container for questions also */
   .category-form {
     margin: 0;
     display: flex;
     flex-direction: column;
     gap: var(--spacing-075);
+
+    @media (width > 37.5rem) {
+      gap: var(--spacing-150);
+    }
   }
 }
 
