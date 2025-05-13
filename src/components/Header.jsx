@@ -1,8 +1,15 @@
 function Header() {
+
+// handling the different svg icons for light-dark mode
+// - conditionally render the svg icon based on the current mode
+// - use the `aria-label` attribute to indicate the current mode
+// - use the `aria-checked` attribute to indicate the current state of the toggle switch
+
   return (
     <header className="header">
       <div className="wrapper">
         <div className="category"></div>
+
         <div className="theme-toggle-wrapper">
           <svg
             aria-hidden="true"
@@ -18,14 +25,27 @@ function Header() {
             />
           </svg>
 
-          <input
+          {/* <input
             type="checkbox"
             id="toggleDarkMode"
-            class="toggle-dark-mode"
+            className="toggle-dark-mode"
             role="switch"
             aria-checked="true"
             aria-label="Dark mode"
-          />
+          /> */}
+
+          <div className="darkmode-toggle">
+            <label className="toggle-dark-mode__label">
+              <input
+                id="toggleDarkMode"
+                type="checkbox"
+                className="toggle-dark-mode__input"
+                role="switch"
+                aria-checked="true"
+              />
+              <div className="toggle-dark-mode__ball"></div>
+            </label>
+          </div>
 
           <svg
             aria-hidden="true"
