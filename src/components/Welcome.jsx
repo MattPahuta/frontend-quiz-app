@@ -5,7 +5,7 @@ import cssIcon from '../assets/icon-css.svg';
 import jsIcon from '../assets/icon-js.svg';
 import a11yIcon from '../assets/icon-accessibility.svg';
 
-function Start() {
+function Welcome() {
   return (
     <main>
       <div className="wrapper grid-columns welcome-grid">
@@ -41,4 +41,4 @@ function Start() {
   );
 }
 
-export default Start
+export default Welcome
