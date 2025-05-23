@@ -25,26 +25,16 @@ function Header() {
             />
           </svg>
 
-          {/* <input
-            type="checkbox"
-            id="toggleDarkMode"
-            className="toggle-dark-mode"
-            role="switch"
-            aria-checked="true"
-            aria-label="Dark mode"
-          /> */}
-
           <div className="darkmode-toggle">
-            <label className="toggle-dark-mode__label">
-              <input
-                id="toggleDarkMode"
-                type="checkbox"
-                className="toggle-dark-mode__input"
-                role="switch"
-                aria-checked="true"
-              />
-              <div className="toggle-dark-mode__ball"></div>
-            </label>
+            <label htmlFor="toggleDarkMode" className="visually-hidden">Enable Dark Mode</label>
+            <input
+              type="checkbox"
+              id="toggleDarkMode"
+              className="toggle-dark-mode"
+              role="switch"
+              // aria-checked="true"
+              aria-label="Dark mode"
+            />
           </div>
 
           <svg

@@ -248,50 +248,17 @@
     }
   }
 
-  .toggle-dark-mode__label {
-    display: flex;
-    padding: 4px;
-    align-items: center;
+  /* Dark Mode Toggle */
+  .toggle-dark-mode {
+    appearance: none;
+    -webkit-appearance: none;
+    cursor: pointer;
+    position: relative;
+    border: none;
     width: 32px;
     height: 20px;
     background-color: var(--clr-purple);
-    cursor: pointer;
-    border: none;
     border-radius: 999px;
-
-    @media (width > 37.5rem) {
-      width: 48px;
-      height: 28px;
-    }
-  }
-
-  .toggle-dark-mode__input {
-    display: none;
-  }
-
-  .toggle-dark-mode__ball {
-    width: 12px;
-    height: 12px;
-    background-color: var(--clr-pure-white);
-    border-radius: 999px;
-    transition: all 250ms ease-in-out;
-
-    @media (width > 37.5rem) {
-      width: 20px;
-      height: 20px;
-    }
-  }
-
-  .toggle-dark-mode__input:checked ~ .toggle-dark-mode__ball {
-    transform: translateX(12px);
-    @media (width > 37.5rem) {
-      transform: translateX(20px);
-    }
-  }
-
-  /* .toggle-dark-mode {
-    appearance: none;
-    -webkit-appearance: none;
 
     @media (width > 37.5rem) {
       width: 48px;
@@ -305,7 +272,7 @@
     background-color: var(--clr-pure-white);
     width: 12px;
     height: 12px;
-    border-radius: 999px;
+    border-radius: 50%;
     transition-property: left;
     transition: 0.2s ease-in-out;
     left: 4px;
@@ -316,11 +283,14 @@
       height: 20px;
     }
 
-  } */
+  }
 
-  /* .toggle-dark-mode[aria-checked="true"]::after {
-    left: 20px;
-  } */
+  .toggle-dark-mode:checked::after {
+    transform: translateX(12px);
+    @media (width > 37.5rem) {
+      transform: translateX(20px);
+    }
+  } 
 
   button.button {
     border: none;
@@ -352,6 +322,11 @@
 
   button.cat-button {
     justify-content: flex-start;
+  }
+
+  button.cat-button:hover,
+  button.cat-button:focus-visible {
+    background-color: var(--clr-purple);
   }
 
   /* Handle icons and icon BGs */
