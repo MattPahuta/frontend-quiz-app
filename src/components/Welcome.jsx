@@ -1,53 +1,72 @@
 // ToDo: import Button component
-// - import data to render Button for each available subject
-import htmlIcon from '../assets/icon-html.svg';
-import cssIcon from '../assets/icon-css.svg';
-import jsIcon from '../assets/icon-js.svg';
-import a11yIcon from '../assets/icon-accessibility.svg';
+// The glob option "as" has been deprecated in favour of "query". 
+//    Please update `as: 'url'` to `query: '?url', import: 'default'`.
+// Dynamically import svg icons
+// Load all SVGs from src
+// const icons = import.meta.glob("../assets/*.svg", { as: "url" });
+const icons = import.meta.glob('../assets/images/*.svg', {
+  query: '?url',
+  import: 'default',
+});
+
 
 function Welcome({ quizzes, onQuizSelect }) {
-  return (
-      <div className="wrapper grid-columns welcome-grid">
-        <div>
-          <h1 className="heading-welcome">
-            Welcome to the <span>Frontend Quiz!</span>
-          </h1>
-          <p className="accent-text">Pick a subject to get started.</p>
-        </div>
-        <div>
-          <form className="category-form">
-            {/* ToDo: map over data to generate buttons */}
-            {quizzes.map((quiz, index) => (
-              <button 
-                key={index} 
-                className="button cat-button" 
-                onClick={() => onQuizSelect(quiz.title)}
-              >
-                {/* <img src={quiz.icon} alt="" className={`icon category cat-${quiz.category.toLowerCase()}`} /> */}
-                {quiz.title}
-              </button>
-            ))}
-            {/* Example buttons, can be removed once data is mapped */}
+  // Helper function to resolve icon paths
 
-            {/* <button className="button cat-button">
-              <img src={htmlIcon} alt="" className="icon category cat-html" />
-              HTML
-            </button>
-            <button className="button cat-button">
-              <img src={cssIcon} alt="" className="icon category cat-css" />
-              CSS
-            </button>
-            <button className="button cat-button">
-              <img src={jsIcon} alt="" className="icon category cat-js" />
-              JavaScript
-            </button>
-            <button className="button cat-button">
-              <img src={a11yIcon} alt="" className="icon category cat-a11y" />
-              Accessibility
-            </button> */}
-          </form>
-        </div>
+  // function resolveIconUrl(relativePath) {
+  //   const filePath = relativePath.split('/').pop(); // Get the file name
+  //   console.log('Resolving icon path for:', filePath);
+  //   const matchedEntry = Object.entries(icons).find(([key]) =>
+  //     key.endsWith(filePath)
+  //   );
+  //   console.log('Matched entry:', matchedEntry);
+  //   return matchedEntry ? matchedEntry[1] : null; // Return the URL if found
+  // }
+  const resolveIconUrl = (fileName) => {
+    const matchedEntry = Object.entries(icons).find(([key]) =>
+      key.endsWith(fileName)
+    );
+    console.log(`Resolving icon path for: ${fileName}`);
+    console.log('Matched entry:', matchedEntry);
+    return matchedEntry ? matchedEntry[1] : null;
+  };
+  
+
+
+  return (
+    <div className="wrapper grid-columns welcome-grid">
+      <div>
+        <h1 className="heading-welcome">
+          Welcome to the <span>Frontend Quiz!</span>
+        </h1>
+        <p className="accent-text">Pick a subject to get started.</p>
       </div>
+      <div>
+        <div className="quiz-categories">
+            {quizzes.map((quiz, index) => {
+              const iconUrl = resolveIconUrl(quiz.icon);
+              console.log(`Icon URL for ${quiz.title}:`, iconUrl);
+              return (
+                <button 
+                  key={index} 
+                  className="button cat-button" 
+                  onClick={() => onQuizSelect(quiz.title)}
+                >
+                  {iconUrl && (
+                    <img 
+                      src={iconUrl} 
+                      alt="" 
+                      className={`icon category`} 
+                      loading="lazy"
+                    />
+                  )}        
+                  {quiz.title}
+                </button>
+              )
+            })}
+          </div>
+      </div>
+    </div>
   );
 }
 

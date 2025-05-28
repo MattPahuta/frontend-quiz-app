@@ -359,7 +359,7 @@
   }
 
   /* ToDo: make this generalized form container for questions also */
-  .category-form {
+  .quiz-categories {
     margin: 0;
     display: flex;
     flex-direction: column;
