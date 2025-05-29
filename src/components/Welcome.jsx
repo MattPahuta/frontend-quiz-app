@@ -1,13 +1,4 @@
 // ToDo: import Button component
-// The glob option "as" has been deprecated in favour of "query". 
-//    Please update `as: 'url'` to `query: '?url', import: 'default'`.
-// Dynamically import svg icons
-// Load all SVGs from src
-// const icons = import.meta.glob("../assets/*.svg", { as: "url" });
-const icons = import.meta.glob('../assets/images/*.svg', {
-  query: '?url',
-  import: 'default',
-});
 
 
 function Welcome({ quizzes, onQuizSelect }) {
@@ -22,17 +13,7 @@ function Welcome({ quizzes, onQuizSelect }) {
   //   console.log('Matched entry:', matchedEntry);
   //   return matchedEntry ? matchedEntry[1] : null; // Return the URL if found
   // }
-  const resolveIconUrl = (fileName) => {
-    const matchedEntry = Object.entries(icons).find(([key]) =>
-      key.endsWith(fileName)
-    );
-    console.log(`Resolving icon path for: ${fileName}`);
-    console.log('Matched entry:', matchedEntry);
-    return matchedEntry ? matchedEntry[1] : null;
-  };
-  
-
-
+ 
   return (
     <div className="wrapper grid-columns welcome-grid">
       <div>
@@ -43,23 +24,19 @@ function Welcome({ quizzes, onQuizSelect }) {
       </div>
       <div>
         <div className="quiz-categories">
-            {quizzes.map((quiz, index) => {
-              const iconUrl = resolveIconUrl(quiz.icon);
-              console.log(`Icon URL for ${quiz.title}:`, iconUrl);
+            {quizzes.map((quiz) => {
               return (
                 <button 
-                  key={index} 
+                  key={quiz.title} 
                   className="button cat-button" 
                   onClick={() => onQuizSelect(quiz.title)}
                 >
-                  {iconUrl && (
-                    <img 
-                      src={iconUrl} 
-                      alt="" 
-                      className={`icon category`} 
-                      loading="lazy"
-                    />
-                  )}        
+                  <img 
+                    src={quiz.icon}
+                    alt=""
+                    className={`icon cat-${quiz.title.toLowerCase()}`}
+                    loading="lazy"
+                  />
                   {quiz.title}
                 </button>
               )

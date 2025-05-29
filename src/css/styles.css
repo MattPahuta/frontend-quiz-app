@@ -346,10 +346,10 @@
     &.cat-css {
       background-color: var(--icon-bg__css);
     }
-    &.cat-js {
+    &.cat-javascript {
       background-color: var(--icon-bg__js);
     }
-    &.cat-a11y {
+    &.cat-accessibility {
       background-color: var(--icon-bg__a11y);
     }
 
