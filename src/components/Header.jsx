@@ -7,7 +7,7 @@ function Header() {
 
   return (
     <header className="header">
-      <div className="wrapper">
+      <div className="header-content">
         <div className="category"></div>
 
         <div className="theme-toggle-wrapper">

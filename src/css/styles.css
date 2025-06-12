@@ -1,4 +1,67 @@
-/* Reset and and Base Styles */
+:root {
+  /* Font Family */
+  --ff-primary: 'Rubik', sans-serif;
+  /* Font Sizes */
+  --fs-300: 0.875rem; /* 14px */
+  --fs-400: 1rem; /* 16px */
+  --fs-450: 1.125rem; /* 18px */
+  --fs-500: 1.25rem; /* 20px */
+  --fs-550: 1.5rem; /* 24px */
+  --fs-600: 1.75rem; /* 28px */
+  --fs-650: 2.25rem; /* 36px */
+  --fs-700: 2.5rem; /* 40px */
+  --fs-display: 4rem; /* 64px */
+
+  @media (width > 37.5rem) {
+    --fs-300: 1rem; /* 16px */
+    --fs-450: 1.75rem; /* 28px */
+    --fs-700: 4rem; /* 64px */
+    --fs-display: 9rem; /* 144px */
+  }
+  
+  /* Colors */
+  --clr-pure-white: hsl(0, 0%, 100%);
+  --clr-light-gray: hsl(220, 37%, 97%);
+  --clr-light-bluish: hsl(216, 47%, 78%);
+  --clr-gray-navy: hsl(219, 13%, 44%);
+  --clr-navy: hsl(215, 27%, 32%);
+  --clr-dark-navy: hsl(216, 25%, 25%);
+  --clr-purple: hsl(277, 91%, 56%);
+  --clr-green: hsl(151, 70%, 50%);
+  --clr-red: hsl(0, 82%, 63%);
+  
+  /* Semantic Variables */
+  --body-background-color: var(--clr-light-gray);
+  --body-color-primary: var(--clr-dark-navy);
+  --body-color-accent: var(--clr-gray-navy);
+  --button-background-color: var(--clr-pure-white);
+  --theme-toggle-color: var(--clr-gray-navy);
+
+  /* Spacing */
+  --spacing-025: 0.25rem; /* 4px */
+  --spacing-050: 0.5rem; /* 8px */
+  --spacing-075: 0.75rem; /* 12px */
+  --spacing-100: 1rem; /* 16px */
+  --spacing-125: 1.25rem; /* 20px */
+  --spacing-150: 1.5rem; /* 24px */
+  --spacing-200: 2rem; /* 32px */
+  --spacing-250: 2.5rem; /* 40px */
+  --spacing-300: 3rem; /* 48px */
+  --spacing-400: 4rem; /* 64px */
+
+
+  --icon-bg__html: hsl(22, 100%, 96%);
+  --icon-bg__css: hsl(151, 88%, 94%);
+  --icon-bg__js: hsl(225, 100%, 96%);
+  --icon-bg__a11y: hsl(278, 100%, 95%);
+
+  --focus-outline-color: currentColor;
+  --focus-outline-offset: 0;
+  --focus-outline-style: solid;
+  --focus-outline-width: 2px;
+
+}
+
 @layer reset {
   *,
   *::before,
@@ -64,77 +127,6 @@
 }
 
 @layer base {
-  :root {
-    /* Font Family */
-    --ff-primary: 'Rubik', sans-serif;
-    /* Font Sizes */
-    --fs-300: 0.875rem; /* 14px */
-    --fs-400: 1rem; /* 16px */
-    --fs-450: 1.125rem; /* 18px */
-    --fs-500: 1.25rem; /* 20px */
-    --fs-550: 1.5rem; /* 24px */
-    --fs-600: 1.75rem; /* 28px */
-    --fs-650: 2.25rem; /* 36px */
-    --fs-700: 2.5rem; /* 40px */
-    --fs-display: 4rem; /* 64px */
-
-    @media (width > 37.5rem) {
-      --fs-300: 1rem; /* 16px */
-      --fs-450: 1.75rem; /* 28px */
-      --fs-700: 4rem; /* 64px */
-      --fs-display: 9rem; /* 144px */
-    }
-
-    /* Colors */
-    --clr-pure-white: hsl(0, 0%, 100%);
-    --clr-light-gray: hsl(220, 37%, 97%);
-    --clr-light-bluish: hsl(216, 47%, 78%);
-    --clr-gray-navy: hsl(219, 13%, 44%);
-    --clr-navy: hsl(215, 27%, 32%);
-    --clr-dark-navy: hsl(216, 25%, 25%);
-    --clr-purple: hsl(277, 91%, 56%);
-    --clr-green: hsl(151, 70%, 50%);
-    --clr-red: hsl(0, 82%, 63%);
-
-    /* Spacing */
-    --spacing-025: 0.25rem; /* 4px */
-    --spacing-050: 0.5rem; /* 8px */
-    --spacing-075: 0.75rem; /* 12px */
-    --spacing-100: 1rem; /* 16px */
-    --spacing-125: 1.25rem; /* 20px */
-    --spacing-150: 1.5rem; /* 24px */
-    --spacing-200: 2rem; /* 32px */
-    --spacing-250: 2.5rem; /* 40px */
-    --spacing-300: 3rem; /* 48px */
-    --spacing-400: 4rem; /* 64px */
-
-    /* Semantic Variables */
-    --bg-body-light: var(--clr-light-gray);
-    --text-body-light: var(--clr-dark-navy);
-    --text-accent-light: var(--clr-gray-navy);
-    --bg-button-light: var(--clr-pure-white);
-
-    --bg-body-dark: var(--clr-dark-navy);
-    --text-body-dark: var(--clr-pure-white);
-    --text-accent-dark: var(--clr-light-bluish);
-    --bg-button-dark: var(--clr-navy);
-
-    --bg-body: var(--bg-body-light);
-    --text-body: var(--text-body-light);
-    --text-accent: var(--text-accent-light);
-    --bg-button: var(--bg-button-light);
-
-    --icon-bg__html: hsl(22, 100%, 96%);
-    --icon-bg__css: hsl(151, 88%, 94%);
-    --icon-bg__js: hsl(225, 100%, 96%);
-    --icon-bg__a11y: hsl(278, 100%, 95%);
-
-    --focus-outline-color: currentColor;
-    --focus-outline-offset: 0;
-    --focus-outline-style: solid;
-    --focus-outline-width: 2px;
-  }
-
   *:focus-visible {
     outline-color: var(--focus-outline-color);
     outline-offset: var(--focus-outline-offset);
@@ -142,42 +134,57 @@
     outline-width: var(--focus-outline-width);
   }
 
-  @media (prefers-color-scheme: dark) {
-    :root {
-      --bg-body: var(--bg-body-dark);
-      --text-body: var(--text-body-dark);
-      --text-accent: var(--text-accent-dark);
-      --bg-button: var(--bg-button-dark);
-      --bg-image: url('../assets/pattern-background-mobile-dark.svg');
-
-      @media (width > 37.5rem) {
-        --bg-image: url('../assets/pattern-background-tablet-dark.svg');
-      }
-      @media (width > 70rem) {
-        --bg-image: url('../assets/pattern-background-desktop-dark.svg');
-      }
-    }
-  }
-
   html {
     font-family: var(--ff-primary);
   }
 
+  .html.dark {
+    --body-background-color: var(--clr-dark-navy);
+    --body-color-primary: var(--clr-pure-white);
+    --body-color-accent: var(--clr-light-bluish);
+    --button-background-color: var(--clr-navy);
+    --theme-toggle-color: var(--clr-pure-white);
+  }
+
   body {
+    /* --bg-image-url: url('../assets/pattern-background-mobile-light.svg');
+    @media (width > 37.5rem) {
+      --bg-image-url: url('../assets/pattern-background-tablet-light.svg');
+    }
+    @media (width > 70rem) {
+      --bg-image-url: url('../assets/pattern-background-desktop-light.svg');
+    } */
     min-height: 100vh;
     line-height: 1.5;
     display: flex;
     flex-direction: column;
-    background-color: var(--bg-body);
-    color: var(--text-body);
-    background-image: var(--bg-image);
-    background-repeat: no-repeat;
+    background-color: var(--body-background-color);
+    color: var(--body-color-primary);
+    /* background-image: var(--bg-image-url);
+    background-repeat: no-repeat; */
 
     @media (width > 37.5rem) {
       /* background-position: top left;
       background-size: 500px 500px; */
     }
   }
+
+  /* @media (prefers-color-scheme: dark) {
+    body {
+      --bg-body: var(--bg-body-dark);
+      --text-body: var(--text-body-dark);
+      --text-accent: var(--text-accent-dark);
+      --bg-button: var(--bg-button-dark);
+      --bg-image-url: url('../assets/pattern-background-mobile-dark.svg');
+
+      @media (width > 37.5rem) {
+        --bg-image-url: url('../assets/pattern-background-tablet-dark.svg');
+      }
+      @media (width > 70rem) {
+        --bg-image-url: url('../assets/pattern-background-desktop-dark.svg');
+      }
+    }
+  } */
 
   .main {
     padding-block-start: var(--spacing-200);
@@ -202,7 +209,7 @@
   .accent-text {
     font-size: var(--fs-300);
     font-style: italic;
-    color: var(--text-accent);
+    color: var(--body-color-accent);
   }
 }
 
@@ -211,6 +218,7 @@
     --wrapper-max-width: 1160px;
     max-width: var(--wrapper-max-width);
     margin-inline: auto;
+    padding-block: var(--spacing-200);
     padding-inline: var(--spacing-150);
 
     @media (width > 37.5rem) {
@@ -224,9 +232,17 @@
   }
 
   .header {
-    height: 72px;
+    /* height: 72px; */
+    /* display: flex; */
+    padding-block: var(--spacing-100);
+    padding-inline: var(--spacing-150);
+  }
+
+  .header-content {
     display: flex;
-    padding: var(--spacing-150) var(--spacing-100);
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
   }
 
   @media (width > 37.5rem) {
@@ -240,11 +256,14 @@
   .theme-toggle-wrapper {
     display: flex;
     align-items: center;
-    /* justify-content: center; */
     gap: var(--spacing-050);
 
     @media (width > 37.5rem) {
       gap: var(--spacing-100);
+    }
+
+    svg > path {
+      fill: var(--theme-toggle-color);
     }
   }
 
@@ -294,8 +313,8 @@
 
   button.button {
     border: none;
-    background-color: var(--bg-button);
-    color: var(--text-body);
+    background-color: var(--button-background-color);
+    color: var(--body-color-primary);
     cursor: pointer;
     display: inline-flex;
     align-items: center;
@@ -324,10 +343,11 @@
     justify-content: flex-start;
   }
 
-  button.cat-button:hover,
-  button.cat-button:focus-visible {
-    background-color: var(--clr-purple);
+  button:hover,
+  button:focus-visible {
+    outline: 2px solid var(--clr-purple);
   }
+
 
   /* Handle icons and icon BGs */
   /* ToDo: also for styling answer letters */
