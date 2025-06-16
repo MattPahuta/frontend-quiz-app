@@ -1,9 +1,10 @@
-function Header() {
+function Header({ currentTheme, toggleTheme }) {
 
 // handling the different svg icons for light-dark mode
 // - conditionally render the svg icon based on the current mode
 // - use the `aria-label` attribute to indicate the current mode
 // - use the `aria-checked` attribute to indicate the current state of the toggle switch
+// ToDo: create toggleTheme component for better separation of concerns
 
   return (
     <header className="header">
@@ -34,6 +35,8 @@ function Header() {
               role="switch"
               // aria-checked="true"
               aria-label="Dark mode"
+              onChange={toggleTheme}
+              checked={currentTheme === 'dark'}
             />
           </div>
 

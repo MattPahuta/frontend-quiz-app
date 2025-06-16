@@ -138,7 +138,7 @@
     font-family: var(--ff-primary);
   }
 
-  .html.dark {
+  body[data-theme='dark'] {
     --body-background-color: var(--clr-dark-navy);
     --body-color-primary: var(--clr-pure-white);
     --body-color-accent: var(--clr-light-bluish);

@@ -7,6 +7,23 @@ import axios from 'axios';
 // import data from './data/data.json';
 
 function App() {
+  // handle light/dark mode
+  const [theme, setTheme] = React.useState(() => {
+    const savedTheme = localStorage.getItem('theme');
+    if (savedTheme) return savedTheme;
+    return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+  });
+
+  React.useEffect(() => {
+    document.getElementsByTagName('body')[0].setAttribute('data-theme', theme);
+    localStorage.setItem('theme', theme);
+  }, [theme]);
+
+  const toggleTheme = () => {
+    setTheme(prevTheme => (prevTheme === 'dark' ? 'light' : 'dark'));
+  }
+
+
   const [quizzes, setQuizzes] = React.useState([]);
   const [selectedQuiz, setSelectedQuiz] = React.useState(null);
 
@@ -34,7 +51,7 @@ function App() {
 
   return (
     <>
-      <Header />
+      <Header currentTheme={theme} toggleTheme={toggleTheme} />
       {!selectedQuiz ? (
         <Welcome quizzes={quizzes} onQuizSelect={handleQuizSelection} />
       ) : (
