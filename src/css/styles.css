@@ -163,6 +163,8 @@
     /* background-image: var(--bg-image-url);
     background-repeat: no-repeat; */
 
+    transition: background-color 0.3s ease, color 0.3s ease;
+
     @media (width > 37.5rem) {
       /* background-position: top left;
       background-size: 500px 500px; */
@@ -264,6 +266,7 @@
 
     svg > path {
       fill: var(--theme-toggle-color);
+      transition: fill 0.3s ease;
     }
   }
 
