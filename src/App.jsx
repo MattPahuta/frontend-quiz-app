@@ -8,20 +8,20 @@ import axios from 'axios';
 
 function App() {
   // handle light/dark mode
-  const [theme, setTheme] = React.useState(() => {
-    const savedTheme = localStorage.getItem('theme');
-    if (savedTheme) return savedTheme;
-    return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
-  });
+  // const [theme, setTheme] = React.useState(() => {
+  //   const savedTheme = localStorage.getItem('theme');
+  //   if (savedTheme) return savedTheme;
+  //   return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+  // });
 
-  React.useEffect(() => {
-    document.getElementsByTagName('body')[0].setAttribute('data-theme', theme);
-    localStorage.setItem('theme', theme);
-  }, [theme]);
+  // React.useEffect(() => {
+  //   document.getElementsByTagName('body')[0].setAttribute('data-theme', theme);
+  //   localStorage.setItem('theme', theme);
+  // }, [theme]);
 
-  const toggleTheme = () => {
-    setTheme(prevTheme => (prevTheme === 'dark' ? 'light' : 'dark'));
-  }
+  // const toggleTheme = () => {
+  //   setTheme(prevTheme => (prevTheme === 'dark' ? 'light' : 'dark'));
+  // }
 
 
   const [quizzes, setQuizzes] = React.useState([]);
@@ -51,7 +51,8 @@ function App() {
 
   return (
     <>
-      <Header currentTheme={theme} toggleTheme={toggleTheme} />
+      {/* <Header currentTheme={theme} toggleTheme={toggleTheme} /> */}
+      <Header />
       {!selectedQuiz ? (
         <Welcome quizzes={quizzes} onQuizSelect={handleQuizSelection} />
       ) : (

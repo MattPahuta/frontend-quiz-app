@@ -1,8 +1,13 @@
-function ThemeToggle({toggleTheme, currentTheme}) {
+import { useTheme } from "../ThemeContext";
+
+// function ThemeToggle({toggleTheme, currentTheme}) {
+function ThemeToggle() {
   // handling the different svg icons for light-dark mode
   // - conditionally render the svg icon based on the current mode
   // - use the `aria-label` attribute to indicate the current mode
   // - use the `aria-checked` attribute to indicate the current state of the toggle switch
+
+  const { theme, toggleTheme } = useTheme();
 
   return (
     <div className="theme-toggle-wrapper">
@@ -29,11 +34,13 @@ function ThemeToggle({toggleTheme, currentTheme}) {
           id="toggleDarkMode"
           className="toggle-dark-mode"
           role="switch"
-          // aria-checked="true"
           aria-label="Dark mode toggle"
+          // onChange={toggleTheme}
+          // checked={currentTheme === 'dark'}
+          // aria-checked={currentTheme === 'dark'}
           onChange={toggleTheme}
-          checked={currentTheme === 'dark'}
-          aria-checked={currentTheme === 'dark'}
+          checked={theme === 'dark'}
+          aria-checked={theme === 'dark'}
         />
       </div>
 

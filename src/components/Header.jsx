@@ -3,8 +3,8 @@ import ThemeToggle from "./ThemeToggle";
 function Header({ currentTheme, toggleTheme }) {
 
   return (
-    <header className="header">
-      <div className="header-content">
+    <header>
+      <div className="wrapper header-content">
         <div className="category"></div>
         <ThemeToggle currentTheme={currentTheme} toggleTheme={toggleTheme} />
 

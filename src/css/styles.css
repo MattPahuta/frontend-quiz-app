@@ -46,6 +46,7 @@
   --spacing-250: 2.5rem; /* 40px */
   --spacing-300: 3rem; /* 48px */
   --spacing-400: 4rem; /* 64px */
+  --spacing-500: 5rem; /* 80px */
   /* Icon colors */
   --icon-bg__html: hsl(22, 100%, 96%);
   --icon-bg__css: hsl(151, 88%, 94%);
@@ -154,7 +155,7 @@
     @media (width > 37.5rem) {
       --bg-image-url: url('../assets/pattern-background-tablet-dark.svg');
     }
-    @media (width > 70rem) {
+    @media (width > 64rem) {
       --bg-image-url: url('../assets/pattern-background-desktop-dark.svg');
     }
   }
@@ -169,6 +170,11 @@
     background-image: var(--bg-image-url);
     background-repeat: no-repeat;
     transition: background-color 0.3s ease, background-image 0.3s ease, color 0.3s ease;
+    
+    @media (width > 64rem) {
+      background-size: cover;
+      background-position: center;
+    }
   }
 
   /* @media (prefers-color-scheme: dark) {
@@ -224,34 +230,46 @@
     }
   }
   .wrapper {
-    --wrapper-max-width: 1160px;
-    max-width: var(--wrapper-max-width);
+    max-width: var(--wrapper-max-width, 1160px);
     margin-inline: auto;
-    padding-block: var(--spacing-200);
+    padding-block: var(--wrapper-padding-block, var(--spacing-200));
+
+    @media (width > 37.5rem) {
+      --wrapper-padding-block: 0;
+    }
 
   }
 
   .grid-columns {
     display: grid;
     gap: var(--spacing-250);
-  }
 
-  .header {
-    padding-block: var(--spacing-100);
+    @media (width > 37.5rem) {
+      gap: var(--spacing-400);
+    }
+
+    @media (width > 64rem) {
+      grid-template-columns: 1fr 1fr;
+      gap: var(--spacing-200);
+    }
   }
 
   .header-content {
+    --wrapper-padding-block: var(--spacing-100);
     display: flex;
     align-items: center;
     justify-content: space-between;
     width: 100%;
-  }
 
-  @media (width > 37.5rem) {
-    .welcome-grid {
-      gap: var(--spacing-400);
+    @media (width > 37.5rem) {
+      --wrapper-padding-block: var(--spacing-250);
+    }
+
+    @media (width > 64rem) {
+      --wrapper-padding-block: var(--spacing-500);
     }
   }
+
 }
 
 @layer components {

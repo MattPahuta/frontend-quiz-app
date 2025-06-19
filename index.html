@@ -17,17 +17,6 @@
     <title>Frontend Quiz</title>
   </head>
   <body>
-    <script>
-      (function () {
-        const storedTheme = localStorage.getItem('theme');
-        const prefersDarkScheme = window.matchMedia('(prefers-color-scheme: dark)').matches;
-        const theme = storedTheme || (prefersDarkScheme ? 'dark' : 'light');
-        // document.getElementsByTagName('body')[0].classList.add(theme);
-        // document.documentElement.classList.add(theme);
-        document.body.setAttribute('data-theme', theme);
-        console.log(`Theme set to: ${theme}`);
-      })();
-    </script>
     <div id="root"></div>
     <script type="module" src="/src/main.jsx"></script>
   </body>

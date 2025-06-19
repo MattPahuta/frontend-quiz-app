@@ -15,7 +15,7 @@ function Welcome({ quizzes, onQuizSelect }) {
   // }
  
   return (
-    <div className="wrapper grid-columns welcome-grid">
+    <div className="wrapper grid-columns">
       <div>
         <h1 className="heading-welcome">
           Welcome to the <span>Frontend Quiz!</span>
