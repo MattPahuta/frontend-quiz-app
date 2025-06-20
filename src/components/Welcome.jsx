@@ -1,7 +1,7 @@
 // ToDo: import Button component
 
 
-function Welcome({ quizzes, onQuizSelect }) {
+function Welcome({ quizzes, startQuiz }) {
   // Helper function to resolve icon paths
 
   // function resolveIconUrl(relativePath) {
@@ -16,20 +16,20 @@ function Welcome({ quizzes, onQuizSelect }) {
  
   return (
     <div className="wrapper grid-columns">
-      <div>
+      <div className="info">
         <h1 className="heading-welcome">
           Welcome to the <span>Frontend Quiz!</span>
         </h1>
         <p className="accent-text">Pick a subject to get started.</p>
       </div>
-      <div>
-        <div className="quiz-categories">
+
+        <div className="selection-container categories">
             {quizzes.map((quiz) => {
               return (
                 <button 
                   key={quiz.title} 
                   className="button cat-button" 
-                  onClick={() => onQuizSelect(quiz.title)}
+                  onClick={() => startQuiz(quiz.title)}
                 >
                   <img 
                     src={quiz.icon}
@@ -42,7 +42,7 @@ function Welcome({ quizzes, onQuizSelect }) {
               )
             })}
           </div>
-      </div>
+
     </div>
   );
 }

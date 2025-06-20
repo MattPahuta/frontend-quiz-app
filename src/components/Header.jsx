@@ -1,10 +1,11 @@
 import ThemeToggle from "./ThemeToggle";
 
-function Header({ currentTheme, toggleTheme }) {
+function Header({ currentTheme, toggleTheme, quizCategory, quizIcon }) {
 
   return (
     <header>
       <div className="wrapper header-content">
+        {/* if a quiz started/quiz category recieved, display it */}
         <div className="category"></div>
         <ThemeToggle currentTheme={currentTheme} toggleTheme={toggleTheme} />
 

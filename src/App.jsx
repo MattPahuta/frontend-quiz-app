@@ -3,30 +3,17 @@ import React from 'react';
 import Header from './components/Header';
 import Welcome from './components/Welcome';
 import Quiz from './components/Quiz';
+import Results from './components/Results';
 import axios from 'axios';
 // import data from './data/data.json';
 
 function App() {
-  // handle light/dark mode
-  // const [theme, setTheme] = React.useState(() => {
-  //   const savedTheme = localStorage.getItem('theme');
-  //   if (savedTheme) return savedTheme;
-  //   return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
-  // });
-
-  // React.useEffect(() => {
-  //   document.getElementsByTagName('body')[0].setAttribute('data-theme', theme);
-  //   localStorage.setItem('theme', theme);
-  // }, [theme]);
-
-  // const toggleTheme = () => {
-  //   setTheme(prevTheme => (prevTheme === 'dark' ? 'light' : 'dark'));
-  // }
-
-
+  const [isQuizActive, setIsQuizActive] = React.useState(false);
   const [quizzes, setQuizzes] = React.useState([]);
   const [selectedQuiz, setSelectedQuiz] = React.useState(null);
-
+  const [currentQuiz, setCurrentQuiz] = React.useState(null);
+  const [currentQuestionIndex, setCurrentQuestionIndex] = React.useState(null);
+  const [userAnswers, setUserAnswers] = React.useState([]);
 
   const fetchData = async () => {
     try {
@@ -49,15 +36,56 @@ function App() {
     setSelectedQuiz(selectedQuiz);
   }
 
+  function startQuiz(title) {
+    const quiz = quizzes.find(quiz => quiz.title === title);
+    setCurrentQuiz(quiz);
+    setCurrentQuestionIndex(0);
+    setUserAnswers([]);
+    setIsQuizActive(true);
+  }
+
+  function handleAnswerSubmit(selected) {
+    setUserAnswers(prevAnswers => [...prevAnswers, selected]);
+    setCurrentQuestionIndex(prevIndex => prevIndex + 1);
+  }
+
+  function resetQuiz() {
+    setCurrentQuiz(null);
+    setCurrentQuestionIndex(0);
+    setUserAnswers([]);
+    setIsQuizActive(false);
+  }
+
+  // return (
+  //   <>
+  //     <Header />
+  //     {!selectedQuiz ? (
+  //       <Welcome quizzes={quizzes} onQuizSelect={handleQuizSelection} />
+  //     ) : (
+  //       <Quiz quiz={selectedQuiz} />
+  //     )}
+  //   </>
+  // )
+
   return (
     <>
-      {/* <Header currentTheme={theme} toggleTheme={toggleTheme} /> */}
       <Header />
-      {!selectedQuiz ? (
-        <Welcome quizzes={quizzes} onQuizSelect={handleQuizSelection} />
-      ) : (
-        <Quiz quiz={selectedQuiz} />
-      )}
+      {
+        !isQuizActive
+          ? <Welcome quizzes={quizzes} onSelect={startQuiz} />
+          : currentQuestionIndex < currentQuiz.questions.length
+            ? <Quiz
+                question={currentQuiz.questions[currentQuestionIndex]}
+                questionIndex={currentQuestionIndex}
+                total={currentQuiz.questions.length}
+                onAnswerSubmit={handleAnswerSubmit}
+              />
+            : <Results 
+                answers={userAnswers}
+                questions={currentQuiz.questions}
+                onRestart={resetQuiz}
+              />
+      }
     </>
   )
 }
