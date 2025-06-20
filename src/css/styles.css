@@ -4,6 +4,7 @@
   /* Font Sizes */
   --fs-300: 0.875rem; /* 14px */
   --fs-400: 1rem; /* 16px */
+  /* ToDo: rename to symantic names - heading-sml */
   --fs-450: 1.125rem; /* 18px */
   --fs-500: 1.25rem; /* 20px */
   --fs-550: 1.5rem; /* 24px */
@@ -277,6 +278,12 @@
 }
 
 @layer components {
+  .header-left p {
+    font-size: var(--fs-450);
+    font-weight: 500;
+    line-height: 1;
+  }
+
   .theme-toggle-wrapper {
     line-height: 0;
     display: flex;

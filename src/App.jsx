@@ -10,7 +10,8 @@ import axios from 'axios';
 function App() {
   const [isQuizActive, setIsQuizActive] = React.useState(false);
   const [quizzes, setQuizzes] = React.useState([]);
-  const [selectedQuiz, setSelectedQuiz] = React.useState(null);
+  // legacy state - selectedQuiz replaced with currentQuiz
+  // const [selectedQuiz, setSelectedQuiz] = React.useState(null);
   const [currentQuiz, setCurrentQuiz] = React.useState(null);
   const [currentQuestionIndex, setCurrentQuestionIndex] = React.useState(null);
   const [userAnswers, setUserAnswers] = React.useState([]);
@@ -29,15 +30,16 @@ function App() {
     fetchData();
   }, []);
 
-  const handleQuizSelection = (quizTitle) => {
-    console.log(`Selected quiz: ${quizTitle}`);
-    // Here you can implement the logic to navigate to the quiz page or display the quiz
-    const selectedQuiz = quizzes.find(quiz => quiz.title === quizTitle);
-    setSelectedQuiz(selectedQuiz);
-  }
+  // legacy function - replaced with startQuiz
+  // const handleQuizSelection = (quizTitle) => {
+  //   console.log(`Selected quiz: ${quizTitle}`);
+  //   const selectedQuiz = quizzes.find(quiz => quiz.title === quizTitle);
+  //   setSelectedQuiz(selectedQuiz);
+  // }
 
-  function startQuiz(title) {
-    const quiz = quizzes.find(quiz => quiz.title === title);
+  function startQuiz(selectedTitle) {
+    console.log(`Starting ${selectedTitle} quiz.`)
+    const quiz = quizzes.find(quiz => quiz.title === selectedTitle);
     setCurrentQuiz(quiz);
     setCurrentQuestionIndex(0);
     setUserAnswers([]);

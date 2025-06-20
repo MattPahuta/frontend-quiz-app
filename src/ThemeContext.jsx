@@ -2,10 +2,6 @@ import { createContext, useContext, useEffect, useState } from "react";
 
 const ThemeContext = createContext();
 
-export const useTheme = () => {
-  return useContext(ThemeContext)
-};
-
 export const ThemeProvider = ({ children }) => {
   // Determine initial theme from localStorage or system preference
   const getInitialTheme = () => {
@@ -13,16 +9,10 @@ export const ThemeProvider = ({ children }) => {
     if (stored) return stored;
     return window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
   };
-
+  // State for theme
   const [theme, setTheme] = useState(getInitialTheme);
-
-  // Apply theme to <html> element, save to localStorage
+  // Apply theme to body using data attribute save to localStorage
   useEffect(() => {
-    // const root = document.documentElement;
-    // root.classList.remove("light", "dark");
-    // root.classList.add(theme);
-    // localStorage.setItem("theme", theme);
-
     document
       .getElementsByTagName('body')[0]
       .setAttribute('data-theme', theme);
@@ -33,6 +23,8 @@ export const ThemeProvider = ({ children }) => {
     setTheme(prevTheme => (prevTheme === "dark" ? "light" : "dark"));
   }
 
+  // const useTheme = () => useContext(ThemeContext);
+
   return (
     <ThemeContext.Provider value={{theme, toggleTheme}}>
       {children}
@@ -41,4 +33,8 @@ export const ThemeProvider = ({ children }) => {
 
 };
 
-// export const useTheme = () => useContext(ThemeContext);
+// export const useTheme = () => {
+//   return useContext(ThemeContext);
+// };
+
+export const useTheme = () => useContext(ThemeContext);

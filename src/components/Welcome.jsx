@@ -1,7 +1,7 @@
 // ToDo: import Button component
 
 
-function Welcome({ quizzes, startQuiz }) {
+function Welcome({ quizzes, onSelect }) {
   // Helper function to resolve icon paths
 
   // function resolveIconUrl(relativePath) {
@@ -29,7 +29,7 @@ function Welcome({ quizzes, startQuiz }) {
                 <button 
                   key={quiz.title} 
                   className="button cat-button" 
-                  onClick={() => startQuiz(quiz.title)}
+                  onClick={() => onSelect(quiz.title)}
                 >
                   <img 
                     src={quiz.icon}
