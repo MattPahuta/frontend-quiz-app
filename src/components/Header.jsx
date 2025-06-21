@@ -1,10 +1,7 @@
-// import { useTheme } from '../ThemeContext';
 import ThemeToggle from "./ThemeToggle";
 
 // ToDo: add default prop? null?
 function Header({ currentQuiz }) {
-
-  // const { theme } = useTheme();
 
   return (
     <header>

@@ -71,7 +71,7 @@ function App() {
 
   return (
     <>
-      <Header />
+      <Header currentQuiz={currentQuiz} />
       {
         !isQuizActive
           ? <Welcome quizzes={quizzes} onSelect={startQuiz} />
@@ -79,7 +79,7 @@ function App() {
             ? <Quiz
                 question={currentQuiz.questions[currentQuestionIndex]}
                 questionIndex={currentQuestionIndex}
-                total={currentQuiz.questions.length}
+                totalQuestions={currentQuiz.questions.length}
                 onAnswerSubmit={handleAnswerSubmit}
               />
             : <Results 

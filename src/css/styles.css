@@ -19,7 +19,7 @@
     --fs-700: 4rem; /* 64px */
     --fs-display: 9rem; /* 144px */
   }
-  
+
   /* Colors */
   --clr-pure-white: hsl(0, 0%, 100%);
   --clr-light-gray: hsl(220, 37%, 97%);
@@ -69,7 +69,6 @@
   @media (width > 70rem) {
     --bg-image-url: url('../assets/pattern-background-desktop-light.svg');
   }
-
 }
 
 @layer reset {
@@ -174,8 +173,9 @@
     color: var(--body-color-primary);
     background-image: var(--bg-image-url);
     background-repeat: no-repeat;
-    transition: background-color 0.3s ease, background-image 0.3s ease, color 0.3s ease;
-    
+    transition: background-color 0.3s ease, background-image 0.3s ease,
+      color 0.3s ease;
+
     @media (width > 64rem) {
       background-size: cover;
       background-position: center;
@@ -242,7 +242,6 @@
     @media (width > 37.5rem) {
       --wrapper-padding-block: 0;
     }
-
   }
 
   .grid-columns {
@@ -275,6 +274,15 @@
     }
   }
 
+  .header-left {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-100);
+
+    @media (width > 37.5rem) {
+      gap: var(--spacing-150);
+    }
+  }
 }
 
 @layer components {
@@ -329,7 +337,7 @@
   }
 
   .toggle-dark-mode::after {
-    content: "";
+    content: '';
     position: absolute;
     background-color: var(--clr-pure-white);
     width: 12px;
@@ -344,7 +352,6 @@
       width: 20px;
       height: 20px;
     }
-
   }
 
   .toggle-dark-mode:checked::after {
@@ -352,7 +359,7 @@
     @media (width > 37.5rem) {
       transform: translateX(20px);
     }
-  } 
+  }
 
   button.button {
     border: none;
@@ -383,7 +390,8 @@
     }
   }
 
-  button.cat-button {
+  button.cat-button,
+  button.option-button {
     justify-content: flex-start;
   }
 
@@ -391,7 +399,6 @@
   button:focus-visible {
     outline: 2px solid var(--clr-purple);
   }
-
 
   /* Handle icons and icon BGs */
   /* ToDo: also for styling answer letters */
