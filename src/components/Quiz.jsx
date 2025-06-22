@@ -46,13 +46,14 @@ function Quiz({question, questionIndex, totalQuestions, onAnswerSubmit}) {
           <button 
             key={option} 
             onClick={() => handleSelectedOption(option)} 
-            className="button option-btn"
+            className="button option-button"
           >
+            <span className="option-letter">A</span>
             {option}
           </button>
         ))}
         <button
-          className="button submit-option-btn"
+          className="button submit-option-button"
           onClick={handleSubmit}
           disabled={selectedOption === null}
         >

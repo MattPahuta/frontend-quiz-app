@@ -27,6 +27,7 @@
   --clr-gray-navy: hsl(219, 13%, 44%);
   --clr-navy: hsl(215, 27%, 32%);
   --clr-dark-navy: hsl(216, 25%, 25%);
+  --clr-light-purple: hsl(278, 100%, 95%);
   --clr-purple: hsl(277, 91%, 56%);
   --clr-green: hsl(151, 70%, 50%);
   --clr-red: hsl(0, 82%, 63%);
@@ -361,6 +362,17 @@
     }
   }
 
+  .selection-container {
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-075);
+
+    @media (width > 37.5rem) {
+      gap: var(--spacing-150);
+    }
+  }
+
   button.button {
     border: none;
     background-color: var(--button-background-color);
@@ -368,13 +380,13 @@
     cursor: pointer;
     display: inline-flex;
     align-items: center;
-    justify-content: center;
     gap: var(--spacing-100);
     border-radius: var(--spacing-075);
     padding: var(--spacing-075);
     font-size: var(--fs-450);
     font-weight: 500;
     box-shadow: var(--button-box-shadow);
+
 
     @media screen and (--ms-high-contrast: active) {
       border: 2px solid currentColor;
@@ -395,19 +407,65 @@
     justify-content: flex-start;
   }
 
-  button:hover,
-  button:focus-visible {
+  button.cat-button:hover,
+  button.cat-button:focus-visible {
     outline: 2px solid var(--clr-purple);
+  }
+
+  button.option-button {
+    min-height: 64px;
+    text-align: left;
+  }
+
+  button.option-button:hover .option-letter,
+  button.option-button:focus-visible .option-letter {
+    background-color: var(--clr-light-purple);
+    color: var(--clr-purple);
+  }
+
+  button.option-button:focus-visible {
+    outline-color: var(--clr-purple);
+  }
+
+  button.submit-option-button {
+    min-height: 56px;
+    justify-content: center;
+    background-color: var(--clr-purple);
+    color: var(--clr-pure-white);
+    transition: opacity 150ms ease-in-out;
+  }
+
+  button.submit-option-button:hover,
+  button.submit-option-button:focus-visible {
+    opacity: 0.7;
   }
 
   /* Handle icons and icon BGs */
   /* ToDo: also for styling answer letters */
   button img.icon,
-  input[type='radio'] {
+  .option-button .option-letter {
+    display: inline-block;
+    flex-shrink: 0;
     width: 40px;
+    height: 40px;
     padding: var(--spacing-025);
     border-radius: 6px;
 
+    @media (width > 37.5rem) {
+      width: 56px;
+      height: 56px;
+    }
+  }
+
+  .option-button .option-letter {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--clr-light-gray);
+    color: var(--clr-gray-navy);
+  }
+
+  .cat-button img.icon {
     &.answer-icon {
       background-color: var(--clr-gray-navy);
     }
@@ -423,22 +481,9 @@
     &.cat-accessibility {
       background-color: var(--icon-bg__a11y);
     }
-
-    @media (width > 37.5rem) {
-      width: 56px;
-    }
   }
 
-  .selection-container {
-    margin: 0;
-    display: flex;
-    flex-direction: column;
-    gap: var(--spacing-075);
 
-    @media (width > 37.5rem) {
-      gap: var(--spacing-150);
-    }
-  }
 }
 
 @layer utilities {
