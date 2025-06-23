@@ -16,6 +16,8 @@ function App() {
   const [currentQuestionIndex, setCurrentQuestionIndex] = React.useState(null);
   const [userAnswers, setUserAnswers] = React.useState([]);
 
+  console.log(currentQuiz)
+
   const fetchData = async () => {
     try {
       const response = await axios.get('/data.json');
@@ -77,6 +79,7 @@ function App() {
           ? <Welcome quizzes={quizzes} onSelect={startQuiz} />
           : currentQuestionIndex < currentQuiz.questions.length
             ? <Quiz
+                quiz={currentQuiz.title}
                 question={currentQuiz.questions[currentQuestionIndex]}
                 questionIndex={currentQuestionIndex}
                 totalQuestions={currentQuiz.questions.length}
