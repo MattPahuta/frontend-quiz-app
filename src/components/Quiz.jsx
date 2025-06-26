@@ -29,6 +29,8 @@ function Quiz({quiz, question, questionIndex, totalQuestions, onAnswerSubmit}) {
 
   // ToDo: use clsx library to conditionally render correct/incorrect styles
   // - button styles for incorrect/correct states
+  // - remove hover and focus styles of option buttons after submit
+  //    -- pointer-events: auto or none
 
   return (
     <section className="wrapper grid-columns">
@@ -54,11 +56,15 @@ function Quiz({quiz, question, questionIndex, totalQuestions, onAnswerSubmit}) {
 
           }
 
+          // Testing/temp only - only handles hover effect, not focus
+          const pointerStyles = hasSubmitted ? "none" : "auto";
+
           return (
             <button 
               key={`${option}-${index}`} 
               onClick={() => handleSelectedOption(option)} 
               className={`button option-button ${isSelected ? 'selected' : ''} ${status}`}
+              style={{pointerEvents: pointerStyles  }}
             >
               <span className="option-letter">{letters[index]}</span>
               <span className="option-text">{option}</span>
@@ -79,6 +85,7 @@ function Quiz({quiz, question, questionIndex, totalQuestions, onAnswerSubmit}) {
             className="button submit-option-button"
             onClick={hasSubmitted ? handleNext : handleSubmit}
             // ToDo: add validation instead of disabling button
+            // -- function to render 'please select answer' msg, within handleSubmit
             disabled={selectedOption === null}
           >
             {hasSubmitted ? "Next Question" : "Submit Answer"}

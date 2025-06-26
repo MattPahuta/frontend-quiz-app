@@ -512,6 +512,23 @@
     align-items: center;
     background-color: var(--clr-light-gray);
     color: var(--clr-gray-navy);
+
+  }
+  
+  button.option-button.selected.correct {
+    outline-color: var(--clr-green);
+
+    > span.option-letter {
+      background-color: var(--clr-green);
+    }
+  }
+
+  button.option-button.selected.incorrect {
+    outline-color: var(--clr-red);
+
+    > span.option-letter {
+      background-color: var(--clr-red);
+    }
   }
 
   /* .option-button.selected .option-letter {
