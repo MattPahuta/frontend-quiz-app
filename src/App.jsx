@@ -32,13 +32,6 @@ function App() {
     fetchData();
   }, []);
 
-  // legacy function - replaced with startQuiz
-  // const handleQuizSelection = (quizTitle) => {
-  //   console.log(`Selected quiz: ${quizTitle}`);
-  //   const selectedQuiz = quizzes.find(quiz => quiz.title === quizTitle);
-  //   setSelectedQuiz(selectedQuiz);
-  // }
-
   function startQuiz(selectedTitle) {
     console.log(`Starting ${selectedTitle} quiz.`)
     const quiz = quizzes.find(quiz => quiz.title === selectedTitle);
@@ -86,6 +79,7 @@ function App() {
                 onAnswerSubmit={handleAnswerSubmit}
               />
             : <Results 
+                quiz={currentQuiz.title}
                 answers={userAnswers}
                 questions={currentQuiz.questions}
                 onRestart={resetQuiz}

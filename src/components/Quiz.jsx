@@ -10,14 +10,20 @@ function Quiz({quiz, question, questionIndex, totalQuestions, onAnswerSubmit}) {
   const [hasSubmitted, setHasSubmitted] = useState(false);
 
   const isCorrect = selectedOption === question.answer;
-  console.log(question.question, questionIndex, totalQuestions);
+  console.log(`Correct! ${isCorrect} - Selected: ${selectedOption}, Answer: ${question.answer}`);
+  // ToDo: use isCorrect to conditionally render styles, messages, accessibility features
+  // Call in handleSubmit
+  // console.log(question.question, questionIndex, totalQuestions);
 
   function handleSelectedOption(option) {
     if (!hasSubmitted) setSelectedOption(option);
   }
 
   function handleSubmit() {
-    if (selectedOption === null) return;
+    if (selectedOption === null) {
+      // render message
+      return;
+    }
     setHasSubmitted(true);
   }
   
@@ -31,6 +37,9 @@ function Quiz({quiz, question, questionIndex, totalQuestions, onAnswerSubmit}) {
   // - button styles for incorrect/correct states
   // - remove hover and focus styles of option buttons after submit
   //    -- pointer-events: auto or none
+  // ToDo: Add accessibility features
+  // - aria-labels for buttons
+  // - annouce correct/incorrect answers
 
   return (
     <section className="wrapper grid-columns">
@@ -46,6 +55,7 @@ function Quiz({quiz, question, questionIndex, totalQuestions, onAnswerSubmit}) {
           const isAnswer = option === question.answer;
           // const isCorrect = selectedOption === question.answer;
           // console.log(`isCorrect: ${isCorrect}`)
+          // ToDo: use clsx library to handle status class, pointer styles
           let status = '';
           if (hasSubmitted) {
             if (isAnswer) {
@@ -80,7 +90,7 @@ function Quiz({quiz, question, questionIndex, totalQuestions, onAnswerSubmit}) {
           );
         })}
         
-        <div className="quiz-submit">
+        <div className="quiz-action-container">
           <button
             className="button submit-option-button"
             onClick={hasSubmitted ? handleNext : handleSubmit}
@@ -90,7 +100,7 @@ function Quiz({quiz, question, questionIndex, totalQuestions, onAnswerSubmit}) {
           >
             {hasSubmitted ? "Next Question" : "Submit Answer"}
           </button>
-
+          <p className="quiz-action-text"></p>
         </div>
 
       </div>

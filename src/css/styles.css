@@ -303,6 +303,12 @@
   .quiz-question {
     font-size: var(--fs-heading-med); 
   }
+
+  .quiz-action-container {
+    @media (width > 37.5rem) {
+      padding-block-start: var(--spacing-050);
+    }
+  }
 }
 
 @layer components {
@@ -431,7 +437,7 @@
 
   button.cat-button:hover,
   button.cat-button:focus-visible {
-    outline: 2px solid var(--clr-purple);
+    outline: 3px solid var(--clr-purple);
   }
 
   button.option-button {
