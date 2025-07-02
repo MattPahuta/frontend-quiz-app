@@ -8,6 +8,7 @@ function Quiz({quiz, question, questionIndex, totalQuestions, onAnswerSubmit}) {
 
   const [selectedOption, setSelectedOption] = useState(null);
   const [hasSubmitted, setHasSubmitted] = useState(false);
+  const [feedbackMessage, setFeedbackMessage] = useState('');
 
   const isCorrect = selectedOption === question.answer;
   console.log(`Correct! ${isCorrect} - Selected: ${selectedOption}, Answer: ${question.answer}`);
@@ -16,12 +17,15 @@ function Quiz({quiz, question, questionIndex, totalQuestions, onAnswerSubmit}) {
   // console.log(question.question, questionIndex, totalQuestions);
 
   function handleSelectedOption(option) {
-    if (!hasSubmitted) setSelectedOption(option);
+    if (!hasSubmitted) {
+      setSelectedOption(option);
+      setFeedbackMessage('');
+    } 
   }
 
   function handleSubmit() {
     if (selectedOption === null) {
-      // render message
+      setFeedbackMessage('Please select an answer');
       return;
     }
     setHasSubmitted(true);
@@ -74,7 +78,7 @@ function Quiz({quiz, question, questionIndex, totalQuestions, onAnswerSubmit}) {
               key={`${option}-${index}`} 
               onClick={() => handleSelectedOption(option)} 
               className={`button option-button ${isSelected ? 'selected' : ''} ${status}`}
-              style={{pointerEvents: pointerStyles  }}
+              style={{pointerEvents: pointerStyles}}
             >
               <span className="option-letter">{letters[index]}</span>
               <span className="option-text">{option}</span>
@@ -94,13 +98,17 @@ function Quiz({quiz, question, questionIndex, totalQuestions, onAnswerSubmit}) {
           <button
             className="button submit-option-button"
             onClick={hasSubmitted ? handleNext : handleSubmit}
-            // ToDo: add validation instead of disabling button
-            // -- function to render 'please select answer' msg, within handleSubmit
-            disabled={selectedOption === null}
           >
             {hasSubmitted ? "Next Question" : "Submit Answer"}
           </button>
-          <p className="quiz-action-text"></p>
+
+          {feedbackMessage && (
+            <div className="feedback-message">
+              <img src={iconIncorrect} alt="" className="icon icon-feedback" />
+              <p>{feedbackMessage}</p>
+            </div>
+          )}
+
         </div>
 
       </div>
