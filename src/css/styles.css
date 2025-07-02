@@ -35,12 +35,15 @@
   --box-shadow-light: 0px 16px 40px 0px rgba(143, 160, 193, 0.14);
   --box-shadow-dark: 0px 16px 40px 0px rgba(49, 62, 81, 0.14);
   /* Semantic Variables */
+  /* ToDo: rename button-background-color to align with React code, 'option-button-bg'? */
   --body-background-color: var(--clr-light-gray);
   --body-color-primary: var(--clr-dark-navy);
   --body-color-accent: var(--clr-gray-navy);
   --button-background-color: var(--clr-pure-white);
   --theme-toggle-color: var(--clr-gray-navy);
   --button-box-shadow: var(--box-shadow-light);
+  --progress-bar-bg: var(--clr-pure-white);
+
   /* Spacing */
   --spacing-025: 0.25rem; /* 4px */
   --spacing-050: 0.5rem; /* 8px */
@@ -157,6 +160,7 @@
     --button-background-color: var(--clr-navy);
     --button-box-shadow: var(--box-shadow-dark);
     --theme-toggle-color: var(--clr-pure-white);
+    --progress-bar-bg: var(--clr-navy);
 
     --bg-image-url: url('../assets/pattern-background-mobile-dark.svg');
     @media (width > 37.5rem) {
@@ -170,7 +174,7 @@
   body {
     min-height: 100vh;
     line-height: 1.5;
-    display: flex;
+    display: flex; 
     flex-direction: column;
     background-color: var(--body-background-color);
     color: var(--body-color-primary);
@@ -301,6 +305,7 @@
   }
 
   .quiz-question {
+    margin-block-end: var(--spacing-150);
     font-size: var(--fs-heading-med);
   }
 
@@ -571,6 +576,22 @@
     &.cat-accessibility {
       background-color: var(--icon-bg__a11y);
     }
+  }
+
+  .progress-bar-wrapper {
+    height: 16px;
+    display: flex;
+    align-items: center;;
+    padding: var(--spacing-025);
+    background-color: var(--progress-bar-bg);
+    border-radius: 999px;
+  }
+
+  .progress-bar {
+    height: 8px;
+    background-color: var(--clr-purple);
+    border-radius: 104px;
+    transition: width 0.3s ease-in-out;
   }
 }
 

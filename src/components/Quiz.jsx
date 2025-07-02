@@ -10,6 +10,7 @@ function Quiz({quiz, question, questionIndex, totalQuestions, onAnswerSubmit}) {
   const [hasSubmitted, setHasSubmitted] = useState(false);
   const [feedbackMessage, setFeedbackMessage] = useState('');
 
+  const progressPercentage = ((questionIndex) / totalQuestions) * 100;
   const isCorrect = selectedOption === question.answer;
   console.log(`Correct! ${isCorrect} - Selected: ${selectedOption}, Answer: ${question.answer}`);
   // ToDo: use isCorrect to conditionally render styles, messages, accessibility features
@@ -49,9 +50,16 @@ function Quiz({quiz, question, questionIndex, totalQuestions, onAnswerSubmit}) {
     <section className="wrapper grid-columns">
       <div className="quiz-question-info">
         <h1 className="visually-hidden">{quiz} quiz</h1>
+        {/* ToDo: add aria announcement for current question */}
         <p className="accent-text">Question {questionIndex + 1} of {totalQuestions}</p>
         <h2 className="quiz-question">{question.question}</h2>
-        <div className="quiz-progress-bar"></div>
+        <div className="progress-bar-wrapper">
+          <div 
+            className="progress-bar"
+            style={{ width: `${progressPercentage}%` }}
+          >
+          </div>
+        </div>
       </div>
       <div className="selection-container multiple-choice-answers">
         {question.options.map((option, index) => {
@@ -103,7 +111,7 @@ function Quiz({quiz, question, questionIndex, totalQuestions, onAnswerSubmit}) {
           </button>
 
           {feedbackMessage && (
-            <div className="feedback-message">
+            <div className="feedback-message" role="alert" aria-live="polite">
               <img src={iconIncorrect} alt="" className="icon icon-feedback" />
               <p>{feedbackMessage}</p>
             </div>
