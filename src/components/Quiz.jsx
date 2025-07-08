@@ -47,12 +47,14 @@ function Quiz({quiz, question, questionIndex, totalQuestions, onAnswerSubmit}) {
   // - annouce correct/incorrect answers
 
   return (
-    <section className="wrapper grid-columns">
+    <section className="wrapper quiz-wrapper">
+      <h1 className="visually-hidden">{quiz} quiz</h1>
       <div className="quiz-question-info">
-        <h1 className="visually-hidden">{quiz} quiz</h1>
-        {/* ToDo: add aria announcement for current question */}
-        <p className="accent-text">Question {questionIndex + 1} of {totalQuestions}</p>
-        <h2 className="quiz-question">{question.question}</h2>
+        <div>
+          {/* ToDo: add aria announcement for current question */}
+          <p className="accent-text">Question {questionIndex + 1} of {totalQuestions}</p>
+          <h2 className="quiz-question">{question.question}</h2>
+        </div>
         <div className="progress-bar-wrapper">
           <div 
             className="progress-bar"
@@ -102,22 +104,23 @@ function Quiz({quiz, question, questionIndex, totalQuestions, onAnswerSubmit}) {
           );
         })}
         
-        <div className="quiz-action-container">
-          <button
-            className="button submit-option-button"
-            onClick={hasSubmitted ? handleNext : handleSubmit}
-          >
-            {hasSubmitted ? "Next Question" : "Submit Answer"}
-          </button>
 
-          {feedbackMessage && (
-            <div className="feedback-message" role="alert" aria-live="polite">
-              <img src={iconIncorrect} alt="" className="icon icon-feedback" />
-              <p>{feedbackMessage}</p>
-            </div>
-          )}
+      </div>
 
-        </div>
+      <div className="quiz-action-container">
+        <button
+          className="button submit-option-button"
+          onClick={hasSubmitted ? handleNext : handleSubmit}
+        >
+          {hasSubmitted ? "Next Question" : "Submit Answer"}
+        </button>
+
+        {feedbackMessage && (
+          <div className="feedback-message" role="alert" aria-live="polite">
+            <img src={iconIncorrect} alt="" className="icon icon-feedback" />
+            <p>{feedbackMessage}</p>
+          </div>
+        )}
 
       </div>
     </section>
@@ -125,21 +128,3 @@ function Quiz({quiz, question, questionIndex, totalQuestions, onAnswerSubmit}) {
 }
 
 export default Quiz;
-
-
-  /* 
-    return (
-    <button 
-      key={quiz.title} 
-      className="button cat-button" 
-      onClick={() => onSelect(quiz.title)}
-    >
-      <img 
-        src={quiz.icon}
-        alt=""
-        className={`icon cat-${quiz.title.toLowerCase()}`}
-        loading="lazy"
-      />
-      {quiz.title}
-    </button>
-  */
