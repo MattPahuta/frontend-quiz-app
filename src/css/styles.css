@@ -14,7 +14,7 @@
   --fs-display: 4rem; /* 64px */
 
   @media (width > 37.5rem) {
-    --fs-text-sml: 1rem; /* 16px */
+    --fs-text-sml: 1.25rem; /* 20px */
     --fs-heading-sml: 1.75rem; /* 28px */
     --fs-heading-med: 2.25rem; /* 36px */
     --fs-700: 4rem; /* 64px */
@@ -221,10 +221,14 @@
     font-weight: 500;
   }
 
-  .heading-welcome {
+  h1.heading-welcome {
     font-size: var(--fs-700);
-    margin-bottom: var(--spacing-100);
+    margin-block-end: var(--spacing-100);
     font-weight: 300;
+
+    @media (width > 64rem) {
+      margin-block-end: var(--spacing-300);
+    }
   }
   .heading-welcome span {
     font-weight: 600;
@@ -255,11 +259,25 @@
     }
   }
 
+  .grid-columns {
+    display: grid;
+    /* gap: var(--spacing-250); */
 
+    @media (width > 37.5rem) {
+      /* gap: var(--spacing-400); */
+    }
+
+    @media (width > 64rem) {
+      grid-template-columns: 1fr 1fr;
+      row-gap: var(--spacing-200);
+      /* gap: var(--spacing-200); */
+    }
+  }
 
 
   .header-content {
     --wrapper-padding-block: var(--spacing-100);
+    min-height: 72px;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -284,31 +302,32 @@
     }
   }
 
-  .quiz-wrapper {
-    display: grid;
 
-    @media (width > 64rem) {
-      grid-template-columns: 1fr 1fr;
-      gap: var(--spacing-200);
-    }
 
-  }
-
-  .quiz-question-info {
+  .quiz-info {
     margin-block-end: var(--spacing-250);
-    display: grid;
-    gap: var(--spacing-150);
+    /* display: grid; */
+    /* gap: var(--spacing-150); */
 
     @media (width > 37.5rem) {
       margin-block-end: var(--spacing-400);
-      gap: var(--spacing-250);
+      /* gap: var(--spacing-250); */
     }
     @media (width > 64rem) {
       margin-block: 0;
+      max-width: 465px;
     }
   }
 
-  .quiz-question-info p {
+  .quiz-question-info {
+    display: grid;
+
+    @media (width > 64rem) {
+      padding-block-end: var(--spacing-150);
+    }
+  }
+
+  .quiz-question-number {
     line-height: 1;
     margin-block-end: var(--spacing-075);
 
@@ -318,7 +337,12 @@
   }
 
   .quiz-question {
+    margin-block-end: var(--spacing-150);
     font-size: var(--fs-heading-med);
+
+    @media (width > 37.5rem) {
+      margin-block-end: var(--spacing-250);
+    }
   }
 
   .selection-container {

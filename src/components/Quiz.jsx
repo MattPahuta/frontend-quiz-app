@@ -47,12 +47,12 @@ function Quiz({quiz, question, questionIndex, totalQuestions, onAnswerSubmit}) {
   // - annouce correct/incorrect answers
 
   return (
-    <section className="wrapper quiz-wrapper">
+    <section className="wrapper grid-columns">
       <h1 className="visually-hidden">{quiz} quiz</h1>
-      <div className="quiz-question-info">
+      <div className="quiz-info quiz-question-info">
         <div>
           {/* ToDo: add aria announcement for current question */}
-          <p className="accent-text">Question {questionIndex + 1} of {totalQuestions}</p>
+          <p className="accent-text quiz-question-number">Question {questionIndex + 1} of {totalQuestions}</p>
           <h2 className="quiz-question">{question.question}</h2>
         </div>
         <div className="progress-bar-wrapper">
