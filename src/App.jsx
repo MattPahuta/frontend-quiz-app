@@ -5,18 +5,20 @@ import Welcome from './components/Welcome';
 import Quiz from './components/Quiz';
 import Results from './components/Results';
 import axios from 'axios';
-// import data from './data/data.json';
 
 function App() {
   const [isQuizActive, setIsQuizActive] = React.useState(false);
   const [quizzes, setQuizzes] = React.useState([]);
-  // legacy state - selectedQuiz replaced with currentQuiz
-  // const [selectedQuiz, setSelectedQuiz] = React.useState(null);
   const [currentQuiz, setCurrentQuiz] = React.useState(null);
   const [currentQuestionIndex, setCurrentQuestionIndex] = React.useState(null);
   const [userAnswers, setUserAnswers] = React.useState([]);
 
-  console.log(currentQuiz)
+  let userScore = userAnswers.filter((answer, index) => {
+    return answer === currentQuiz?.questions[index].answer;
+  }).length;
+
+  console.log(currentQuiz);
+  console.log(`User score: ${userScore} out of ${currentQuiz?.questions.length}`);
 
   const fetchData = async () => {
     try {
@@ -53,17 +55,6 @@ function App() {
     setIsQuizActive(false);
   }
 
-  // return (
-  //   <>
-  //     <Header />
-  //     {!selectedQuiz ? (
-  //       <Welcome quizzes={quizzes} onQuizSelect={handleQuizSelection} />
-  //     ) : (
-  //       <Quiz quiz={selectedQuiz} />
-  //     )}
-  //   </>
-  // )
-
   return (
     <>
       <Header currentQuiz={currentQuiz} />
@@ -79,9 +70,9 @@ function App() {
                 onAnswerSubmit={handleAnswerSubmit}
               />
             : <Results 
-                quiz={currentQuiz.title}
-                answers={userAnswers}
-                questions={currentQuiz.questions}
+                quiz={currentQuiz}
+                score={userScore}
+                totalQuestions={currentQuiz.questions.length}
                 onRestart={resetQuiz}
               />
       }
@@ -89,4 +80,4 @@ function App() {
   )
 }
 
-export default App
+export default App;

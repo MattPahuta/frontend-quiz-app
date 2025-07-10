@@ -40,6 +40,7 @@
   --body-color-primary: var(--clr-dark-navy);
   --body-color-accent: var(--clr-gray-navy);
   --button-background-color: var(--clr-pure-white);
+  --component-background-color: var(--clr-pure-white);
   --theme-toggle-color: var(--clr-gray-navy);
   --button-box-shadow: var(--box-shadow-light);
   --progress-bar-bg: var(--clr-pure-white);
@@ -157,6 +158,7 @@
     --body-background-color: var(--clr-dark-navy);
     --body-color-primary: var(--clr-pure-white);
     --body-color-accent: var(--clr-light-bluish);
+    --component-background-color: var(--clr-navy);
     --button-background-color: var(--clr-navy);
     --button-box-shadow: var(--box-shadow-dark);
     --theme-toggle-color: var(--clr-pure-white);
@@ -302,8 +304,6 @@
     }
   }
 
-
-
   .quiz-info {
     margin-block-end: var(--spacing-250);
     /* display: grid; */
@@ -385,6 +385,15 @@
       color: var(--clr-red);
     }
   }
+
+  /* ToDo: consolidate this class and others with '.component-primary' */
+  /* - light mode bg: white, -dark mode bg: navy */
+  .quiz-result {
+    margin-block-end: var(--spacing-075);
+    padding: var(--spacing-200);
+    background-color: var(--component-background-color);
+    border-radius: var(--spacing-075);;
+  }
 }
 
 @layer components {
@@ -392,6 +401,19 @@
     font-size: var(--fs-heading-sml);
     font-weight: 500;
     line-height: 1;
+  }
+  
+  .category-badge-wrapper {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-100);
+  }
+
+  .category-badge-wrapper p {
+    font-size: var(--fs-heading-sml);
+    font-weight: 500;
+    line-height: 1;
+
   }
 
   .theme-toggle-wrapper {
@@ -557,7 +579,8 @@
   /* Handle icons and icon BGs */
   /* ToDo: also for styling answer letters */
   button img.icon,
-  .option-button .option-letter {
+  .option-button .option-letter,
+  .category-badge-wrapper img.icon {
     display: inline-block;
     flex-shrink: 0;
     width: 40px;
@@ -604,7 +627,8 @@
     color: var(--clr-pure-white);
   } */
 
-  .cat-button img.icon {
+  .cat-button img.icon,
+  .category-badge-wrapper img.icon {
     &.answer-icon {
       background-color: var(--clr-gray-navy);
     }

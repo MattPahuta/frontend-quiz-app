@@ -1,5 +1,7 @@
 import ThemeToggle from "./ThemeToggle";
 
+// ToDo: Make the category icon/name badge a seperate component
+
 function Header({ currentQuiz }) {
   return (
     <header>

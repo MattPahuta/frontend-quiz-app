@@ -67,8 +67,6 @@ function Quiz({quiz, question, questionIndex, totalQuestions, onAnswerSubmit}) {
         {question.options.map((option, index) => {
           const isSelected = selectedOption === option;
           const isAnswer = option === question.answer;
-          // const isCorrect = selectedOption === question.answer;
-          // console.log(`isCorrect: ${isCorrect}`)
           // ToDo: use clsx library to handle status class, pointer styles
           let status = '';
           if (hasSubmitted) {
@@ -77,7 +75,6 @@ function Quiz({quiz, question, questionIndex, totalQuestions, onAnswerSubmit}) {
             } else if (isSelected) {
               status = 'incorrect';
             }
-
           }
 
           // Testing/temp only - only handles hover effect, not focus
@@ -102,9 +99,7 @@ function Quiz({quiz, question, questionIndex, totalQuestions, onAnswerSubmit}) {
               )}
             </button>
           );
-        })}
-        
-
+        })} 
       </div>
 
       <div className="quiz-action-container">
