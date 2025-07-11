@@ -5,7 +5,7 @@ function Results({ quiz, score, totalQuestions, onRestart}) {
 
   return (
     <div className="wrapper grid-columns">
-      <div className="quiz-info">
+      <div className="quiz-info results-heading">
         <h1>Quiz completed</h1>
         <p>You scored...</p>
       </div>

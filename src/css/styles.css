@@ -4,21 +4,22 @@
   /* Font Sizes */
   --fs-text-sml: 0.875rem; /* 14px */
   --fs-text-reg: 1rem; /* 16px */
-  /* ToDo: rename to symantic names - heading-sml */
   --fs-heading-sml: 1.125rem; /* 18px */
   --fs-heading-med: 1.25rem; /* 20px */
+  --fs-heading-lrg: 2.5rem; /* 40px */
+  --fs-display: 5.5rem; /* 64px */
+
+
   --fs-550: 1.5rem; /* 24px */
   --fs-600: 1.75rem; /* 28px */
   --fs-650: 2.25rem; /* 36px */
-  --fs-700: 2.5rem; /* 40px */
-  --fs-display: 4rem; /* 64px */
 
   @media (width > 37.5rem) {
     --fs-text-sml: 1.25rem; /* 20px */
     --fs-heading-sml: 1.75rem; /* 28px */
     --fs-heading-med: 2.25rem; /* 36px */
-    --fs-700: 4rem; /* 64px */
-    --fs-display: 9rem; /* 144px */
+    --fs-heading-lrg: 4rem; /* 64px */
+    --fs-display: 9rem; /* 80px */
   }
 
   /* Colors */
@@ -224,7 +225,7 @@
   }
 
   h1.heading-welcome {
-    font-size: var(--fs-700);
+    font-size: var(--fs-heading-lrg);
     margin-block-end: var(--spacing-100);
     font-weight: 300;
 
@@ -391,8 +392,42 @@
   .quiz-result {
     margin-block-end: var(--spacing-075);
     padding: var(--spacing-200);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--spacing-100);
     background-color: var(--component-background-color);
     border-radius: var(--spacing-075);;
+  }
+
+  .results-heading {
+    font-size: var(--fs-heading-lrg);
+    line-height: 1.1;
+
+    h1 {
+      font-weight: 400;
+    }
+
+    p {
+      font-weight: 600;
+    }
+  }
+
+  .score-summary {
+    text-align: center;
+  }
+
+  .final-score {
+    font-size: var(--fs-heading-sml);
+    line-height: 1;
+    color: var(--body-color-accent);
+  }
+
+  .final-score strong {
+    display: block;
+    margin-block-end: var(--spacing-100);
+    font-size: var(--fs-display);
+    color: var(--body-color-primary);
   }
 }
 

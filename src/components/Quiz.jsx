@@ -11,8 +11,8 @@ function Quiz({quiz, question, questionIndex, totalQuestions, onAnswerSubmit}) {
   const [feedbackMessage, setFeedbackMessage] = useState('');
 
   const progressPercentage = ((questionIndex) / totalQuestions) * 100;
-  const isCorrect = selectedOption === question.answer;
-  console.log(`Correct! ${isCorrect} - Selected: ${selectedOption}, Answer: ${question.answer}`);
+  // const isCorrect = selectedOption === question.answer;
+  // console.log(`Correct! ${isCorrect} - Selected: ${selectedOption}, Answer: ${question.answer}`);
   // ToDo: use isCorrect to conditionally render styles, messages, accessibility features
   // Call in handleSubmit
   // console.log(question.question, questionIndex, totalQuestions);
