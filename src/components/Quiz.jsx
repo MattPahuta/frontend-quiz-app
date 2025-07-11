@@ -4,7 +4,7 @@ import iconIncorrect from "../assets/icon-incorrect.svg";
 
 const letters = ['A', 'B', 'C', 'D'];
 
-function Quiz({quiz, question, questionIndex, totalQuestions, onAnswerSubmit}) {
+function Quiz({quiz, question, questionIndex, totalQuestions, onAnswerSubmit, isLastQuestion}) {
 
   const [selectedOption, setSelectedOption] = useState(null);
   const [hasSubmitted, setHasSubmitted] = useState(false);
@@ -47,6 +47,7 @@ function Quiz({quiz, question, questionIndex, totalQuestions, onAnswerSubmit}) {
   // - annouce correct/incorrect answers
   // ToDo: add wrapping main element around the section
   // - add aria-label for main element
+  // ToDo: Update the progress bar to 100% when the quiz is completed
 
   return (
     <section className="wrapper grid-columns">
@@ -109,7 +110,8 @@ function Quiz({quiz, question, questionIndex, totalQuestions, onAnswerSubmit}) {
           className="button submit-option-button"
           onClick={hasSubmitted ? handleNext : handleSubmit}
         >
-          {hasSubmitted ? "Next Question" : "Submit Answer"}
+          {hasSubmitted ? (isLastQuestion ? "View Results" : "Next Question") : "Submit Answer"}
+          {/* {hasSubmitted ? "Next Question" : "Submit Answer"} */}
         </button>
 
         {feedbackMessage && (
