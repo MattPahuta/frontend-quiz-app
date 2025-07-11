@@ -45,6 +45,8 @@ function Quiz({quiz, question, questionIndex, totalQuestions, onAnswerSubmit}) {
   // ToDo: Add accessibility features
   // - aria-labels for buttons
   // - annouce correct/incorrect answers
+  // ToDo: add wrapping main element around the section
+  // - add aria-label for main element
 
   return (
     <section className="wrapper grid-columns">

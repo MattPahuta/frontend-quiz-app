@@ -4,7 +4,7 @@ function Results({ quiz, score, totalQuestions, onRestart}) {
   // ToDo: rename 'submit-option-button' to 'button-primary'
 
   return (
-    <div className="wrapper grid-columns">
+    <div className="wrapper grid-columns results-grid">
       <div className="quiz-info results-heading">
         <h1>Quiz completed</h1>
         <p>You scored...</p>
@@ -24,11 +24,13 @@ function Results({ quiz, score, totalQuestions, onRestart}) {
           </p>
         </div>
       </div>
-      <button
-        className="button submit-option-button"
-        onClick={onRestart}>
-        Play Again
-      </button>
+      <div className="quiz-action-container">
+        <button
+          className="button submit-option-button"
+          onClick={onRestart}>
+          Play Again
+        </button>
+      </div>
     </div>
   );
 }

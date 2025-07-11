@@ -7,7 +7,7 @@ import Results from './components/Results';
 import axios from 'axios';
 
 function App() {
-  const [isQuizActive, setIsQuizActive] = React.useState(false);
+  // const [isQuizActive, setIsQuizActive] = React.useState(false);
   const [quizzes, setQuizzes] = React.useState([]);
   const [currentQuiz, setCurrentQuiz] = React.useState(null);
   const [currentQuestionIndex, setCurrentQuestionIndex] = React.useState(null);
@@ -44,6 +44,7 @@ function App() {
     // setUserAnswers([]);
     setScore(0);
     // setIsQuizActive(true);
+    setView('quiz');
   }
 
   function handleAnswerSubmit(selectedAnswer) {
@@ -55,7 +56,8 @@ function App() {
       setCurrentQuestionIndex(prevIndex => prevIndex + 1);
     } else {
       // Quiz completed, show results
-      setIsQuizActive(false);
+      // setIsQuizActive(false);
+      setView('results');
     }
 
     // setUserAnswers(prevAnswers => [...prevAnswers, selectedAnswer]);
@@ -65,14 +67,40 @@ function App() {
   function resetQuiz() {
     setCurrentQuiz(null);
     setCurrentQuestionIndex(0);
+    setScore(0);
+    setView('welcome');
     // setUserAnswers([]);
-    setIsQuizActive(false);
+    // setIsQuizActive(false);
   }
 
   return (
     <>
       <Header currentQuiz={currentQuiz} />
-      {!isQuizActive ? (
+
+      {view === 'welcome' && (
+        <Welcome quizzes={quizzes} onSelect={startQuiz} />
+      )}
+
+      {view === 'quiz' && currentQuiz && (
+        <Quiz
+          quiz={currentQuiz.title}
+          question={currentQuiz.questions[currentQuestionIndex]}
+          questionIndex={currentQuestionIndex}
+          totalQuestions={currentQuiz.questions.length}
+          onAnswerSubmit={handleAnswerSubmit}
+        />
+      )}
+
+      {view === 'results' && currentQuiz && (
+        <Results
+          quiz={currentQuiz}
+          score={score}
+          totalQuestions={currentQuiz.questions.length}
+          onRestart={resetQuiz}
+        />
+      )}
+
+      {/* {!isQuizActive ? (
         <Welcome quizzes={quizzes} onSelect={startQuiz} />
       ) : currentQuestionIndex < currentQuiz.questions.length ? (
         <Quiz
@@ -89,10 +117,8 @@ function App() {
           totalQuestions={currentQuiz.questions.length}
           onRestart={resetQuiz}
         />
-      )}
-      {/* {!isQuizActive && (
-        <Welcome quizzes={quizzes} onSelect={startQuiz} />
       )} */}
+
 
     </>
   );
