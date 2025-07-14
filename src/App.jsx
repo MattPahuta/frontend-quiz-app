@@ -4,7 +4,7 @@ import Header from './components/Header';
 import Welcome from './components/Welcome';
 import Quiz from './components/Quiz';
 import Results from './components/Results';
-import axios from 'axios';
+import quizzData from './data/data.json';
 
 function App() {
   const [quizzes, setQuizzes] = React.useState([]);
@@ -13,25 +13,12 @@ function App() {
   const [score, setScore] = React.useState(0);
   const [view, setView] = React.useState('welcome');
 
-  // console.log(currentQuiz);
-  // console.log(`User score: ${score} out of ${currentQuiz?.questions.length}`);
-
-  const fetchData = async () => {
-    try {
-      const response = await axios.get('/data.json');
-      // console.log(response.data);
-      setQuizzes(response.data.quizzes);
-    } catch (error) {
-      console.error('Error fetching data:', error);
-    }
-  };
-
   React.useEffect(() => {
-    fetchData();
-  }, []);
+    setQuizzes(quizzData.quizzes);
+    console.log('Quizzes loaded:', quizzes);
+  }, [quizzes])
 
   function startQuiz(quizTitle) {
-    console.log(`Starting ${quizTitle} quiz.`)
     const selectedQuiz = quizzes.find(quiz => quiz.title === quizTitle);
     setCurrentQuiz(selectedQuiz);
     setCurrentQuestionIndex(0);
