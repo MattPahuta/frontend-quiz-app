@@ -482,7 +482,7 @@
       transform: translateX(20px);
     }
   }
-  
+
   .category-badge {
     display: flex;
     align-items: center;
@@ -528,6 +528,10 @@
     }
   }
 
+  button[aria-disabled='true'] {
+    cursor: not-allowed;
+  }
+
   button.cat-button,
   button.option-button {
     justify-content: flex-start;
@@ -543,8 +547,8 @@
     text-align: left;
   }
 
-  button.option-button:hover .option-letter,
-  button.option-button:focus-visible .option-letter {
+  button.option-button[aria-disabled="false"]:hover .option-letter,
+  button.option-button[aria-disabled="false"]:focus-visible .option-letter {
     background-color: var(--clr-light-purple);
     color: var(--clr-purple);
   }
@@ -564,6 +568,8 @@
     outline: 3px solid var(--clr-purple);
   }
 
+  /* ToDo: update class name: 'submit-option-button' to 'submit-button' and/or 'button-primary' */
+
   button.submit-option-button {
     width: 100%;
     min-height: 56px;
@@ -580,10 +586,6 @@
   button.submit-option-button:hover,
   button.submit-option-button:focus-visible {
     opacity: 0.7;
-  }
-
-  button.submit-option-button:disabled {
-    cursor: not-allowed;
   }
 
   /* Handle icons and icon BGs */

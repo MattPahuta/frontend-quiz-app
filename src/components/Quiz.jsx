@@ -89,17 +89,17 @@ function Quiz({
             }
           }
 
-          // Testing/temp only - only handles hover effect, not focus
-          const pointerStyles = hasSubmitted ? 'none' : 'auto';
+          const isAriaDisabled = hasSubmitted ? 'true' : 'false';
 
           return (
             <button
               key={`${option}-${index}`}
               onClick={() => handleSelectedOption(option)}
+              aria-disabled={isAriaDisabled}
               className={`button option-button ${
                 isSelected ? 'selected' : ''
               } ${status}`}
-              style={{ pointerEvents: pointerStyles }}>
+            >
               <span className="option-letter">{letters[index]}</span>
               <span className="option-text">{option}</span>
 
