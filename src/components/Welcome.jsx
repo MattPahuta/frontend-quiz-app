@@ -1,4 +1,5 @@
 // ToDo: import Button component
+import CategoryBadge from "./CategoryBadge";
 
 function Welcome({ quizzes, onSelect }) {
   return (
@@ -17,13 +18,10 @@ function Welcome({ quizzes, onSelect }) {
                 className="button cat-button" 
                 onClick={() => onSelect(quiz.title)}
               >
-                <img 
-                  src={quiz.icon}
-                  alt=""
-                  className={`icon cat-${quiz.title.toLowerCase()}`}
-                  loading="lazy"
+                <CategoryBadge 
+                  icon={quiz.icon} 
+                  category={quiz.title}
                 />
-                {quiz.title}
               </button>
             )
           })}

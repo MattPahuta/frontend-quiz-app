@@ -1,6 +1,7 @@
-function Results({ quiz, score, totalQuestions, onRestart}) {
+import CategoryBadge from "./CategoryBadge";
 
-  // props: quiz title (or category badge), score, total questions, onRestart function
+function Results({ quiz, score, totalQuestions, onRestart}) {
+  
   // ToDo: rename 'submit-option-button' to 'button-primary'
 
   return (
@@ -10,14 +11,10 @@ function Results({ quiz, score, totalQuestions, onRestart}) {
         <p>You scored...</p>
       </div>
       <div className="quiz-result">
-        <div className="category-badge-wrapper">
-          <img
-            src={quiz.icon}
-            alt=""
-            className={`icon cat-${quiz.title.toLowerCase()}`}
-          />
-          <p>{quiz.title}</p>
-        </div>
+        <CategoryBadge 
+          icon={quiz.icon}
+          category={quiz.title}
+        />
         <div className="score-summary">
           <p className="final-score">
             <strong>{score}</strong> out of {totalQuestions}

@@ -1,18 +1,18 @@
-function CategoryButton({icon, category}) {
-  // ToDo: create generic button component
-  // ToDo: create generic icon-category badge component
-  // ToDo: use clsx to conditionally add class names for button?
-  // - component for icon
+function CategoryBadge({icon, category}) {
+
+  // ToDo: use clsx to conditionally add class names?
+
   return (
-    <button className="button">
+    <div className="category-badge">
       <img 
         src={icon} 
         alt="" 
-        className="category"
+        className={`icon cat-${category.toLowerCase()}`}
+        loading="lazy"
       />
-      {category}
-    </button>
+      <span>{category}</span>
+    </div>
   )
 }
 
-export default CategoryButton;
+export default CategoryBadge;

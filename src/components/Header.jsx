@@ -1,20 +1,16 @@
 import ThemeToggle from "./ThemeToggle";
-
-// ToDo: Make the category icon/name badge a seperate component
+import CategoryBadge from "./CategoryBadge";
 
 function Header({ currentQuiz }) {
   return (
     <header>
       <div className="wrapper header-content">
-        <div className="header-left">
-          { currentQuiz && (
-            <>
-              <img src={currentQuiz.icon} alt='' className="header-icon" />
-              <p>{currentQuiz.title}</p>
-            </>
-            )
-          }
-        </div>
+        {currentQuiz && (
+          <CategoryBadge 
+            icon={currentQuiz.icon} 
+            category={currentQuiz.title}
+          />
+        )}
         <ThemeToggle />
       </div>
     </header>
