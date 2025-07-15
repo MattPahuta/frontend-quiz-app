@@ -56,7 +56,7 @@ function App() {
   return (
     <>
       <Header currentQuiz={currentQuiz} />
-
+      <main>
       {view === 'welcome' && (
         <Welcome quizzes={quizzes} onSelect={startQuiz} />
       )}
@@ -81,6 +81,7 @@ function App() {
           onRestart={resetQuiz}
         />
       )}
+      </main>
     </>
   );
 }

@@ -57,7 +57,6 @@ function Quiz({
   // - annouce correct/incorrect answers
   // ToDo: add wrapping main element around the section
   // - add aria-label for main element
-  // ToDo: Update the progress bar to 100% when the quiz is completed
 
   return (
     <section className="wrapper grid-columns">

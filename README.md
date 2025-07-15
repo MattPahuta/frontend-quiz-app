@@ -65,6 +65,12 @@ Question component
 - qustion number, question
 - progress slider
 - Form - radio inputs styled like buttons?, submit button
+- Light/Dark mode manual switching
+- Remembers last light/dark mode preference even if it conflicts with the user's prefered color scheme (leverages localStorage along with React useContext)
+
+### Future enhancements
+- More componentized approach to the CSS
+- I took a straightforward approach with one styles.css file for the entire app. This was probably fine for my initial thoughts on the project (building with vanilla JavaScript). But once I decided to make this a React solution, there are cleaner ways to go about it.
 
 
 To see how you can add code snippets, see below:
