@@ -16,10 +16,12 @@ function App() {
   React.useEffect(() => {
     setQuizzes(quizzData.quizzes);
     console.log('Quizzes loaded:', quizzes);
-  }, [quizzes])
+  }, [quizzes]);
 
   function startQuiz(quizTitle) {
-    const selectedQuiz = quizzes.find(quiz => quiz.title === quizTitle);
+    const selectedQuiz = quizzes.find(
+      (quiz) => quiz.title === quizTitle
+    );
     setCurrentQuiz(selectedQuiz);
     setCurrentQuestionIndex(0);
     setScore(0);
@@ -27,18 +29,21 @@ function App() {
   }
 
   function handleAnswerSubmit(selectedAnswer) {
-    const correctAnswer = currentQuiz.questions[currentQuestionIndex].answer;
+    const correctAnswer =
+      currentQuiz.questions[currentQuestionIndex].answer;
     console.log('Correct answer: ', correctAnswer);
     console.log('Current question index: ', currentQuestionIndex);
-    if (selectedAnswer === correctAnswer) setScore(prevScore => prevScore + 1);
+    if (selectedAnswer === correctAnswer)
+      setScore((prevScore) => prevScore + 1);
 
     if (currentQuestionIndex + 1 < currentQuiz.questions.length) {
       setCurrentQuestionIndex((prevIndex) => prevIndex + 1);
     } else {
       setView('results');
-      console.log(`Quiz completed. Your score: ${score} out of ${currentQuiz.questions.length}`);
+      console.log(
+        `Quiz completed. Your score: ${score} out of ${currentQuiz.questions.length}`
+      );
     }
-
   }
 
   function resetQuiz() {
@@ -58,12 +63,13 @@ function App() {
 
       {view === 'quiz' && currentQuiz && (
         <Quiz
-          quiz={currentQuiz.title}
+          quizTitle={currentQuiz.title}
           question={currentQuiz.questions[currentQuestionIndex]}
           questionIndex={currentQuestionIndex}
           totalQuestions={currentQuiz.questions.length}
           onAnswerSubmit={handleAnswerSubmit}
-          isLastQuestion={currentQuestionIndex === currentQuiz.questions.length - 1}
+          isLastQuestion={
+            currentQuestionIndex === currentQuiz.questions.length - 1}
         />
       )}
 

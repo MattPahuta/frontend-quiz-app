@@ -1,16 +1,25 @@
-import { useState } from "react";
-import iconCorrect from "../assets/icon-correct.svg";
-import iconIncorrect from "../assets/icon-incorrect.svg";
+import { useState } from 'react';
+import iconCorrect from '../assets/icon-correct.svg';
+import iconIncorrect from '../assets/icon-incorrect.svg';
 
 const letters = ['A', 'B', 'C', 'D'];
 
-function Quiz({quiz, question, questionIndex, totalQuestions, onAnswerSubmit, isLastQuestion}) {
-
+function Quiz({
+  quizTitle,
+  question,
+  questionIndex,
+  totalQuestions,
+  onAnswerSubmit,
+  isLastQuestion,
+}) {
   const [selectedOption, setSelectedOption] = useState(null);
   const [hasSubmitted, setHasSubmitted] = useState(false);
   const [feedbackMessage, setFeedbackMessage] = useState('');
+  const [answeredCount, setAnsweredCount] = useState(questionIndex);
 
-  const progressPercentage = ((questionIndex) / totalQuestions) * 100;
+  const progressPercentage = (answeredCount / totalQuestions) * 100;
+  console.log(`Progress: ${progressPercentage}%`);
+
   // const isCorrect = selectedOption === question.answer;
   // console.log(`Correct! ${isCorrect} - Selected: ${selectedOption}, Answer: ${question.answer}`);
   // ToDo: use isCorrect to conditionally render styles, messages, accessibility features
@@ -21,7 +30,7 @@ function Quiz({quiz, question, questionIndex, totalQuestions, onAnswerSubmit, is
     if (!hasSubmitted) {
       setSelectedOption(option);
       setFeedbackMessage('');
-    } 
+    }
   }
 
   function handleSubmit() {
@@ -30,12 +39,13 @@ function Quiz({quiz, question, questionIndex, totalQuestions, onAnswerSubmit, is
       return;
     }
     setHasSubmitted(true);
+    setAnsweredCount((prevCount) => prevCount + 1);
   }
-  
+
   function handleNext() {
-    onAnswerSubmit(selectedOption);
     setSelectedOption(null);
     setHasSubmitted(false);
+    onAnswerSubmit(selectedOption);
   }
 
   // ToDo: use clsx library to conditionally render correct/incorrect styles
@@ -51,19 +61,19 @@ function Quiz({quiz, question, questionIndex, totalQuestions, onAnswerSubmit, is
 
   return (
     <section className="wrapper grid-columns">
-      <h1 className="visually-hidden">{quiz} quiz</h1>
+      <h1 className="visually-hidden">{quizTitle} quiz</h1>
       <div className="quiz-info quiz-question-info">
         <div>
           {/* ToDo: add aria announcement for current question */}
-          <p className="accent-text quiz-question-number">Question {questionIndex + 1} of {totalQuestions}</p>
+          <p className="accent-text quiz-question-number">
+            Question {questionIndex + 1} of {totalQuestions}
+          </p>
           <h2 className="quiz-question">{question.question}</h2>
         </div>
         <div className="progress-bar-wrapper">
-          <div 
+          <div
             className="progress-bar"
-            style={{ width: `${progressPercentage}%` }}
-          >
-          </div>
+            style={{ width: `${progressPercentage}%` }}></div>
         </div>
       </div>
       <div className="selection-container multiple-choice-answers">
@@ -81,46 +91,62 @@ function Quiz({quiz, question, questionIndex, totalQuestions, onAnswerSubmit, is
           }
 
           // Testing/temp only - only handles hover effect, not focus
-          const pointerStyles = hasSubmitted ? "none" : "auto";
+          const pointerStyles = hasSubmitted ? 'none' : 'auto';
 
           return (
-            <button 
-              key={`${option}-${index}`} 
-              onClick={() => handleSelectedOption(option)} 
-              className={`button option-button ${isSelected ? 'selected' : ''} ${status}`}
-              style={{pointerEvents: pointerStyles}}
-            >
+            <button
+              key={`${option}-${index}`}
+              onClick={() => handleSelectedOption(option)}
+              className={`button option-button ${
+                isSelected ? 'selected' : ''
+              } ${status}`}
+              style={{ pointerEvents: pointerStyles }}>
               <span className="option-letter">{letters[index]}</span>
               <span className="option-text">{option}</span>
 
               {/* correct/incorrect icon */}
               {hasSubmitted && isSelected && !isAnswer && (
-                <img src={iconIncorrect} alt="" className="icon icon-feedback" />
+                <img
+                  src={iconIncorrect}
+                  alt=""
+                  className="icon icon-feedback"
+                />
               )}
               {hasSubmitted && isAnswer && (
-                <img src={iconCorrect} alt="" className="icon icon-feedback" />
+                <img
+                  src={iconCorrect}
+                  alt=""
+                  className="icon icon-feedback"
+                />
               )}
             </button>
           );
-        })} 
+        })}
       </div>
 
       <div className="quiz-action-container">
         <button
           className="button submit-option-button"
-          onClick={hasSubmitted ? handleNext : handleSubmit}
-        >
-          {hasSubmitted ? (isLastQuestion ? "View Results" : "Next Question") : "Submit Answer"}
-          {/* {hasSubmitted ? "Next Question" : "Submit Answer"} */}
+          onClick={hasSubmitted ? handleNext : handleSubmit}>
+          {hasSubmitted
+            ? isLastQuestion
+              ? 'View Results'
+              : 'Next Question'
+            : 'Submit Answer'}
         </button>
-
         {feedbackMessage && (
-          <div className="feedback-message" role="alert" aria-live="polite">
-            <img src={iconIncorrect} alt="" className="icon icon-feedback" />
+          <div
+            className="feedback-message"
+            role="alert"
+            aria-live="polite">
+            <img
+              src={iconIncorrect}
+              alt=""
+              className="icon icon-feedback"
+            />
             <p>{feedbackMessage}</p>
           </div>
         )}
-
       </div>
     </section>
   );
