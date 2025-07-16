@@ -1,6 +1,8 @@
 import { useState } from 'react';
+import Button from './Button';
 import iconCorrect from '../assets/icon-correct.svg';
 import iconIncorrect from '../assets/icon-incorrect.svg';
+import { clsx } from 'clsx';
 
 const letters = ['A', 'B', 'C', 'D'];
 
@@ -16,15 +18,7 @@ function Quiz({
   const [hasSubmitted, setHasSubmitted] = useState(false);
   const [feedbackMessage, setFeedbackMessage] = useState('');
   const [answeredCount, setAnsweredCount] = useState(questionIndex);
-
   const progressPercentage = (answeredCount / totalQuestions) * 100;
-  console.log(`Progress: ${progressPercentage}%`);
-
-  // const isCorrect = selectedOption === question.answer;
-  // console.log(`Correct! ${isCorrect} - Selected: ${selectedOption}, Answer: ${question.answer}`);
-  // ToDo: use isCorrect to conditionally render styles, messages, accessibility features
-  // Call in handleSubmit
-  // console.log(question.question, questionIndex, totalQuestions);
 
   function handleSelectedOption(option) {
     if (!hasSubmitted) {
@@ -48,15 +42,8 @@ function Quiz({
     onAnswerSubmit(selectedOption);
   }
 
-  // ToDo: use clsx library to conditionally render correct/incorrect styles
-  // - button styles for incorrect/correct states
-  // - remove hover and focus styles of option buttons after submit
-  //    -- pointer-events: auto or none
   // ToDo: Add accessibility features
-  // - aria-labels for buttons
   // - annouce correct/incorrect answers
-  // ToDo: add wrapping main element around the section
-  // - add aria-label for main element
 
   return (
     <section className="wrapper grid-columns">
@@ -79,31 +66,21 @@ function Quiz({
         {question.options.map((option, index) => {
           const isSelected = selectedOption === option;
           const isAnswer = option === question.answer;
-          // ToDo: use clsx library to handle status class, pointer styles
-          let status = '';
-          if (hasSubmitted) {
-            if (isAnswer) {
-              status = 'correct';
-            } else if (isSelected) {
-              status = 'incorrect';
-            }
-          }
-
-          const isAriaDisabled = hasSubmitted ? 'true' : 'false';
+          // Determine button class list
+          const optionBtnClassName = clsx('button option-button', {
+            selected: isSelected,
+            correct: (hasSubmitted && isAnswer),
+            incorrect: (hasSubmitted && !isAnswer && isSelected),
+          })
 
           return (
-            <button
+            <Button
               key={`${option}-${index}`}
               onClick={() => handleSelectedOption(option)}
-              aria-disabled={isAriaDisabled}
-              className={`button option-button ${
-                isSelected ? 'selected' : ''
-              } ${status}`}
-            >
+              ariaDisabled={hasSubmitted ? 'true' : 'false'}
+              className={optionBtnClassName}>
               <span className="option-letter">{letters[index]}</span>
               <span className="option-text">{option}</span>
-
-              {/* correct/incorrect icon */}
               {hasSubmitted && isSelected && !isAnswer && (
                 <img
                   src={iconIncorrect}
@@ -118,21 +95,23 @@ function Quiz({
                   className="icon icon-feedback"
                 />
               )}
-            </button>
+            </Button>
           );
         })}
       </div>
 
       <div className="quiz-action-container">
-        <button
+        <Button
           className="button submit-option-button"
-          onClick={hasSubmitted ? handleNext : handleSubmit}>
+          onClick={hasSubmitted ? handleNext : handleSubmit}
+          ariaDisabled={'false'}
+        >
           {hasSubmitted
             ? isLastQuestion
               ? 'View Results'
               : 'Next Question'
             : 'Submit Answer'}
-        </button>
+        </Button>
         {feedbackMessage && (
           <div
             className="feedback-message"

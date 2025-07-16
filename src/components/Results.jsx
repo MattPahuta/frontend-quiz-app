@@ -1,3 +1,4 @@
+import Button from "./Button";
 import CategoryBadge from "./CategoryBadge";
 
 function Results({ quiz, score, totalQuestions, onRestart}) {
@@ -22,11 +23,12 @@ function Results({ quiz, score, totalQuestions, onRestart}) {
         </div>
       </div>
       <div className="quiz-action-container">
-        <button
+        <Button
           className="button submit-option-button"
-          onClick={onRestart}>
+          onClick={onRestart}
+          ariaDisabled={'false'}>
           Play Again
-        </button>
+        </Button>
       </div>
     </div>
   );

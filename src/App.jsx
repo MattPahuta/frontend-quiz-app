@@ -18,6 +18,7 @@ function App() {
     console.log('Quizzes loaded:', quizzes);
   }, [quizzes]);
 
+
   function startQuiz(quizTitle) {
     const selectedQuiz = quizzes.find(
       (quiz) => quiz.title === quizTitle

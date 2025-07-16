@@ -215,7 +215,7 @@
     font-weight: 500;
   }
 
-  h1.heading-welcome {
+  h1 {
     font-size: var(--fs-heading-lrg);
     margin-block-end: var(--spacing-100);
     font-weight: 300;

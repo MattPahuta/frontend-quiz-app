@@ -1,7 +1,8 @@
-// ToDo: import Button component
+import Button from "./Button";
 import CategoryBadge from "./CategoryBadge";
 
 function Welcome({ quizzes, onSelect }) {
+
   return (
     <div className="wrapper grid-columns">
       <div className="quiz-info">
@@ -13,17 +14,17 @@ function Welcome({ quizzes, onSelect }) {
       <div className="selection-container categories">
           {quizzes.map((quiz) => {
             return (
-              <button 
-                key={quiz.title} 
-                className="button cat-button" 
+              <Button
+                key={quiz.title}
                 onClick={() => onSelect(quiz.title)}
+                className="button cat-button"
               >
-                <CategoryBadge 
-                  icon={quiz.icon} 
+                <CategoryBadge
+                  icon={quiz.icon}
                   category={quiz.title}
                 />
-              </button>
-            )
+              </Button>
+            );
           })}
         </div>
     </div>
