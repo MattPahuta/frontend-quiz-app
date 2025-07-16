@@ -102,7 +102,7 @@ function Quiz({
 
       <div className="quiz-action-container">
         <Button
-          className="button submit-option-button"
+          className="button btn-primary"
           onClick={hasSubmitted ? handleNext : handleSubmit}
           ariaDisabled={'false'}
         >

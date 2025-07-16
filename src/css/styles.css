@@ -24,6 +24,7 @@
   --clr-dark-navy: hsl(216, 25%, 25%);
   --clr-light-purple: hsl(278, 100%, 95%);
   --clr-purple: hsl(277, 91%, 56%);
+  --clr-violet: hsl(276, 81%, 67%);
   --clr-green: hsl(151, 70%, 50%);
   --clr-red: hsl(0, 82%, 63%);
   --box-shadow-light: 0px 16px 40px 0px rgba(143, 160, 193, 0.14);
@@ -568,28 +569,25 @@
     outline: 3px solid var(--clr-purple);
   }
 
-  /* ToDo: update class name: 'submit-option-button' to 'submit-button' and/or 'button-primary' */
-
-  button.submit-option-button {
+  button.btn-primary {
     width: 100%;
     min-height: 56px;
     justify-content: center;
     background-color: var(--clr-purple);
     color: var(--clr-pure-white);
-    transition: opacity 150ms ease-in-out;
+    transition: all 150ms ease-in-out;
 
     @media (width > 37.5rem) {
       padding-block: var(--spacing-200);
     }
   }
 
-  button.submit-option-button:hover,
-  button.submit-option-button:focus-visible {
-    opacity: 0.7;
+  button.btn-primary:hover,
+  button.btn-primary:focus-visible {
+    background-color: var(--clr-violet);
   }
 
   /* Handle icons and icon BGs */
-  /* ToDo: also for styling answer letters */
   button img.icon,
   .option-button .option-letter,
   .category-badge img.icon {
