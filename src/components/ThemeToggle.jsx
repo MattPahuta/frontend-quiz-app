@@ -1,12 +1,6 @@
-import { useTheme } from "../ThemeContext";
+import { useTheme } from "../context/ThemeContext";
 
-// function ThemeToggle({toggleTheme, currentTheme}) {
 function ThemeToggle() {
-  // handling the different svg icons for light-dark mode
-  // - conditionally render the svg icon based on the current mode
-  // - use the `aria-label` attribute to indicate the current mode
-  // - use the `aria-checked` attribute to indicate the current state of the toggle switch
-
   const { theme, toggleTheme } = useTheme();
 
   return (
