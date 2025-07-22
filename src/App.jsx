@@ -1,4 +1,3 @@
-// import Quiz
 import React from 'react';
 import Header from './components/Header';
 import Welcome from './components/Welcome';
@@ -38,9 +37,6 @@ function App() {
       setCurrentQuestionIndex((prevIndex) => prevIndex + 1);
     } else {
       setView('results');
-      console.log(
-        `Quiz completed. Your score: ${score} out of ${currentQuiz.questions.length}`
-      );
     }
   }
 

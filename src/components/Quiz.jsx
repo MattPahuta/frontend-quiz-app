@@ -42,15 +42,11 @@ function Quiz({
     onAnswerSubmit(selectedOption);
   }
 
-  // ToDo: Add accessibility features
-  // - annouce correct/incorrect answers
-
   return (
     <section className="wrapper grid-columns">
       <h1 className="visually-hidden">{quizTitle} quiz</h1>
       <div className="quiz-info quiz-question-info">
         <div>
-          {/* ToDo: add aria announcement for current question */}
           <p className="accent-text quiz-question-number">
             Question {questionIndex + 1} of {totalQuestions}
           </p>
@@ -66,7 +62,6 @@ function Quiz({
         {question.options.map((option, index) => {
           const isSelected = selectedOption === option;
           const isAnswer = option === question.answer;
-          // Determine button class list
           const optionBtnClassName = clsx('button option-button', {
             selected: isSelected,
             correct: (hasSubmitted && isAnswer),

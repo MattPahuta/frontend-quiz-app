@@ -374,6 +374,7 @@
 
   .results-heading h1 {
     font-weight: 300;
+    margin-block-end: var(--spacing-050);
   }
 
   .results-heading p {

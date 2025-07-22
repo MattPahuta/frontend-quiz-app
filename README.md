@@ -1,6 +1,6 @@
 # Frontend Mentor - Frontend quiz app
 
-This is a solution to the [Frontend quiz app challenge on Frontend Mentor](https://www.frontendmentor.io/challenges/frontend-quiz-app-BE7xkzXQnU). Frontend Mentor challenges help you improve your coding skills by building realistic projects. 
+This is a solution to the [Frontend quiz app challenge on Frontend Mentor](https://www.frontendmentor.io/challenges/frontend-quiz-app-BE7xkzXQnU). Frontend Mentor challenges help you improve your coding skills by building realistic projects.
 
 ## Table of contents
 
@@ -15,7 +15,6 @@ This is a solution to the [Frontend quiz app challenge on Frontend Mentor](https
   - [Useful resources](#useful-resources)
 - [Author](#author)
 - [Acknowledgments](#acknowledgments)
-
 
 ## Overview
 
@@ -37,8 +36,9 @@ Users should be able to:
 
 ### Screenshot
 
-![](./screenshot.jpg)
-
+![](./project-ss-01.png)
+![](./project-ss-02.png)
+![](./project-ss-03.png)
 
 ### Links
 
@@ -57,47 +57,35 @@ Users should be able to:
 - [React](https://reactjs.org/) - JS library
 
 
-### Project notes
-
-Start Menu Screen
-- Form with 4 buttons
-Question component
-- qustion number, question
-- progress slider
-- Form - radio inputs styled like buttons?, submit button
-- Light/Dark mode manual switching
-- Remembers last light/dark mode preference even if it conflicts with the user's prefered color scheme (leverages localStorage along with React useContext)
-
 ### Future enhancements
+
 - More componentized approach to the CSS
 - I took a straightforward approach with one styles.css file for the entire app. This was probably fine for my initial thoughts on the project (building with vanilla JavaScript). But once I decided to make this a React solution, there are cleaner ways to go about it.
 
-
 To see how you can add code snippets, see below:
 
-```html
-<h1>Some HTML code I'm proud of</h1>
-```
 ```css
 .proud-of-this-css {
   color: papayawhip;
 }
 ```
+
 ```js
 const proudOfThisFunc = () => {
-  console.log('🎉')
-}
+  console.log('🎉');
+};
 ```
 
 ### Continued development
 
 Use this section to outline areas that you want to continue focusing on in future projects. These could be concepts you're still not completely comfortable with or techniques you found useful that you want to refine and perfect.
 
+Strictly speaking, this app did not need to be developed with React. In fact, as part of the FEM JavaScript path, this is the final project to complete. But I've really come to enjoy working with React and didn't want to pass up an opportunity to keep experimenting and practicing. This was an extremely fun build and a project I'll certainly come back to and draw from in the future.
+
 ### Useful resources
 
 - [Example resource 1](https://www.example.com) - This helped me for XYZ reason. I really liked this pattern and will use it going forward.
 - [Example resource 2](https://www.example.com) - This is an amazing article which helped me finally understand XYZ. I'd recommend it to anyone still learning this concept.
-
 
 ## Author
 
@@ -106,8 +94,6 @@ Use this section to outline areas that you want to continue focusing on in futur
 - Bluesky - [@mattpahuta](https://bsky.app/profile/mattpahuta.bsky.social)
 - LinkedIn - [Matt Pahuta](www.linkedin.com/in/mattpahuta)
 
-
 ## Acknowledgments
 
-This is where you can give a hat tip to anyone who helped you out on this project. Perhaps you worked in a team or got some inspiration from someone else's solution. This is the perfect place to give them some credit.
-
+Somewhere between a beginner and intermediate dev when it comes to React and nearly all of that is thanks to the outstanding course materials from Bob Ziroll and Josh Comeau. 
