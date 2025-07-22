@@ -3,8 +3,6 @@ import CategoryBadge from "./CategoryBadge";
 
 function Results({ quiz, score, totalQuestions, onRestart}) {
   
-  // ToDo: rename 'submit-option-button' to 'button-primary'
-
   return (
     <div className="wrapper grid-columns results-grid">
       <div className="quiz-info results-heading">

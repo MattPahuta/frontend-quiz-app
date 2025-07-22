@@ -15,7 +15,6 @@ function App() {
 
   React.useEffect(() => {
     setQuizzes(quizzData.quizzes);
-    console.log('Quizzes loaded:', quizzes);
   }, [quizzes]);
 
 
@@ -32,8 +31,6 @@ function App() {
   function handleAnswerSubmit(selectedAnswer) {
     const correctAnswer =
       currentQuiz.questions[currentQuestionIndex].answer;
-    console.log('Correct answer: ', correctAnswer);
-    console.log('Current question index: ', currentQuestionIndex);
     if (selectedAnswer === correctAnswer)
       setScore((prevScore) => prevScore + 1);
 

@@ -1,5 +1,3 @@
-
-
 @layer reset, base, layout, components, utilities;
 
 @layer reset {
@@ -139,16 +137,6 @@
       --bg-image-url: url('../assets/pattern-background-desktop-light.svg');
     }
   
-    /* html[data-theme='light'] {
-      --body-background-color: var(--clr-light-gray);
-      --body-color-primary: var(--clr-dark-navy);
-      --body-color-accent: var(--clr-gray-navy);
-      --opt-button-bg: var(--clr-pure-white);
-      --component-background-color: var(--clr-pure-white);
-      --theme-toggle-color: var(--clr-gray-navy);
-      --button-box-shadow: var(--box-shadow-light);
-      --progress-bar-bg: var(--clr-pure-white);  
-    } */
   }
   
   *:focus-visible {
@@ -198,23 +186,6 @@
       background-position: center;
     }
   }
-
-  /* @media (prefers-color-scheme: dark) {
-    body {
-      --bg-body: var(--bg-body-dark);
-      --text-body: var(--text-body-dark);
-      --text-accent: var(--text-accent-dark);
-      --bg-button: var(--bg-button-dark);
-      --bg-image-url: url('../assets/pattern-background-mobile-dark.svg');
-
-      @media (width > 37.5rem) {
-        --bg-image-url: url('../assets/pattern-background-tablet-dark.svg');
-      }
-      @media (width > 70rem) {
-        --bg-image-url: url('../assets/pattern-background-desktop-dark.svg');
-      }
-    }
-  } */
 
   .main {
     padding-block-start: var(--spacing-200);
@@ -601,7 +572,6 @@
     background-color: var(--clr-violet);
   }
 
-  /* Handle icons and icon BGs */
   button img.icon,
   .option-button .option-letter,
   .category-badge img.icon {
