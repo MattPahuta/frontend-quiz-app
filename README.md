@@ -78,14 +78,11 @@ const proudOfThisFunc = () => {
 
 ### Continued development
 
-Use this section to outline areas that you want to continue focusing on in future projects. These could be concepts you're still not completely comfortable with or techniques you found useful that you want to refine and perfect.
-
-Strictly speaking, this app did not need to be developed with React. In fact, as part of the FEM JavaScript path, this is the final project to complete. But I've really come to enjoy working with React and didn't want to pass up an opportunity to keep experimenting and practicing. This was an extremely fun build and a project I'll certainly come back to and draw from in the future.
+Strictly speaking, this app did not need to be developed with React. In fact, this is the final project within the Frontend Masters JavaScript fundamentals path. But I've really come to enjoy working with React and didn't want to pass up an opportunity to keep experimenting and practicing. This was an extremely fun build and a project I'll certainly come back to and build upon in the future.
 
 ### Useful resources
 
-- [Example resource 1](https://www.example.com) - This helped me for XYZ reason. I really liked this pattern and will use it going forward.
-- [Example resource 2](https://www.example.com) - This is an amazing article which helped me finally understand XYZ. I'd recommend it to anyone still learning this concept.
+- [clsx utility](https://www.npmjs.com/package/clsx) - A handy utility for handling className strings conditionally. I've used it in several projects now and now it's a go-to resource for me. 
 
 ## Author
 
@@ -96,4 +93,4 @@ Strictly speaking, this app did not need to be developed with React. In fact, as
 
 ## Acknowledgments
 
-Somewhere between a beginner and intermediate dev when it comes to React and nearly all of that is thanks to the outstanding course materials from Bob Ziroll and Josh Comeau. 
+There is no way to heap enough praise on [Bob Ziroll](https://scrimba.com/@bobziroll) and [Josh Comeau](https://www.joshwcomeau.com/). When it comes to learning React and some of the trickier parts of web development, there are no people I turn to more frequently. 
