@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import Button from './Button';
 import iconCorrect from '../assets/icon-correct.svg';
 import iconIncorrect from '../assets/icon-incorrect.svg';
@@ -19,6 +19,14 @@ function Quiz({
   const [feedbackMessage, setFeedbackMessage] = useState('');
   const [answeredCount, setAnsweredCount] = useState(questionIndex);
   const progressPercentage = (answeredCount / totalQuestions) * 100;
+
+  const questionRef = useRef(null);
+
+  useEffect(() => {
+    if (questionRef.current) {
+      questionRef.current.focus();
+    }
+  }, [questionIndex])
 
   function handleSelectedOption(option) {
     if (!hasSubmitted) {
@@ -50,7 +58,14 @@ function Quiz({
           <p className="accent-text quiz-question-number">
             Question {questionIndex + 1} of {totalQuestions}
           </p>
-          <h2 className="quiz-question">{question.question}</h2>
+          <h2 
+            ref={questionRef}
+            tabIndex="-1"
+            style={{ outline: 'none'}}
+            className="quiz-question"
+          >
+              {question.question}
+          </h2>
         </div>
         <div className="progress-bar-wrapper">
           <div
