@@ -57,25 +57,99 @@ Users should be able to:
 - [React](https://reactjs.org/) - JS library
 
 
-### Future enhancements
-
 - More componentized approach to the CSS
-- I took a straightforward approach with one styles.css file for the entire app. This was probably fine for my initial thoughts on the project (building with vanilla JavaScript). But once I decided to make this a React solution, there are cleaner ways to go about it.
 
-To see how you can add code snippets, see below:
+
+- Include further accessibility enhancements 
+
+
+Nothing groundbreaking with my CSS for this project. In fact, if I were to restart this project, I would likely use Tailwind for most of the styling as the design comp is fairly straightforward. But as it is currently, this project features a basic pattern that I'm following for most projects where I write the CSS from scratch: layers to help organize styles, heavy use of custom utility classes to improve reusability, and leveraging newer CSS standards like nesting and simplified media query syntax.
 
 ```css
-.proud-of-this-css {
-  color: papayawhip;
-}
+@layer layout {
+  body {
+    padding-inline: var(--spacing-150);
+
+    @media (width > 37.5rem) {
+      padding-inline: var(--spacing-400);
+    }
+  }
+  .wrapper {
+    max-width: var(--wrapper-max-width, 1160px);
+    margin-inline: auto;
+    padding-block: var(--wrapper-padding-block, var(--spacing-200));
+
+    @media (width > 37.5rem) {
+      --wrapper-padding-block: 0;
+    }
+  }
+
+  .grid-columns {
+    display: grid;
+
+    @media (width > 64rem) {
+      grid-template-columns: 1fr 1fr;
+      gap: var(--spacing-200);
+    }
+  }
+
+  .header-content {
+    --wrapper-padding-block: var(--spacing-100);
+    min-height: 72px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+
+    @media (width > 37.5rem) {
+      --wrapper-padding-block: var(--spacing-250);
+    }
+
+    @media (width > 64rem) {
+      --wrapper-padding-block: var(--spacing-500);
+    }
+  }
+```
+
+My core rendering logic with my App file started off quite a bit more convoluted than where I ended up. I'm happy with what I feel like is a pretty easy to understand flow and dependencies with a minimal amount of prop drilling.
+
+```js
+  return (
+    <>
+      <Header currentQuiz={currentQuiz} />
+      <main>
+      {view === 'welcome' && (
+        <Welcome quizzes={quizzes} onSelect={startQuiz} />
+      )}
+
+      {view === 'quiz' && currentQuiz && (
+        <Quiz
+          quizTitle={currentQuiz.title}
+          question={currentQuiz.questions[currentQuestionIndex]}
+          questionIndex={currentQuestionIndex}
+          totalQuestions={currentQuiz.questions.length}
+          onAnswerSubmit={handleAnswerSubmit}
+          isLastQuestion={
+            currentQuestionIndex === currentQuiz.questions.length - 1}
+        />
+      )}
+
+      {view === 'results' && currentQuiz && (
+        <Results
+          quiz={currentQuiz}
+          score={score}
+          totalQuestions={currentQuiz.questions.length}
+          onRestart={resetQuiz}
+        />
+      )}
+      </main>
+    </>
+  );
 ```
 
 ```js
-const proudOfThisFunc = () => {
-  console.log('🎉');
-};
-```
 
+```
 ### Continued development
 
 Strictly speaking, this app did not need to be developed with React. In fact, this is the final project within the Frontend Masters JavaScript fundamentals path. But I've really come to enjoy working with React and didn't want to pass up an opportunity to keep experimenting and practicing. This was an extremely fun build and a project I'll certainly come back to and build upon in the future.
@@ -83,6 +157,7 @@ Strictly speaking, this app did not need to be developed with React. In fact, th
 ### Useful resources
 
 - [clsx utility](https://www.npmjs.com/package/clsx) - A handy utility for handling className strings conditionally. I've used it in several projects now and now it's a go-to resource for me. 
+- [Frontend Mentor Learning Pahts](https://www.frontendmentor.io/learning-paths/) - As noted in the intro, this is a Frontend Mentor design. I can speak highly enough about the quality of Frontend Mentor and think their learning paths are some of the best, most thoughtfully developed roadmaps and learning materials. 
 
 ## Author
 
