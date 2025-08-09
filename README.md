@@ -32,7 +32,7 @@ Users should be able to:
 - View the optimal layout for the interface depending on their device's screen size
 - See hover and focus states for all interactive elements on the page
 - Navigate the entire app only using their keyboard
-- **Bonus**: Change the app's theme between light and dark
+- Change the app's theme between light and dark
 
 ### Screenshot
 
@@ -56,14 +56,7 @@ Users should be able to:
 - Mobile-first workflow
 - [React](https://reactjs.org/) - JS library
 
-
-- More componentized approach to the CSS
-
-
-- Include further accessibility enhancements 
-
-
-Nothing groundbreaking with my CSS for this project. In fact, if I were to restart this project, I would likely use Tailwind for most of the styling as the design comp is fairly straightforward. But as it is currently, this project features a basic pattern that I'm following for most projects where I write the CSS from scratch: layers to help organize styles, heavy use of custom utility classes to improve reusability, and leveraging newer CSS standards like nesting and simplified media query syntax.
+Nothing groundbreaking with my CSS for this project. If I were to restart this project, I would likely use Tailwind for most of the styling as the design comp is fairly straightforward. However, as it stands, this project employs a basic pattern that I follow for most projects where I write the CSS from scratch: layers to help organize styles, heavy use of custom utility classes to enhance reusability, and leveraging newer CSS standards, such as nesting and simplified media query syntax.
 
 ```css
 @layer layout {
@@ -111,13 +104,13 @@ Nothing groundbreaking with my CSS for this project. In fact, if I were to resta
   }
 ```
 
-My core rendering logic with my App file started off quite a bit more convoluted than where I ended up. I'm happy with what I feel like is a pretty easy to understand flow and dependencies with a minimal amount of prop drilling.
+My core rendering logic with my App file started quite a bit more convoluted than where I ended up. I'm happy with what I feel is an easy-to-understand flow and dependencies with a minimal amount of prop drilling.
 
 ```js
-  return (
-    <>
-      <Header currentQuiz={currentQuiz} />
-      <main>
+return (
+  <>
+    <Header currentQuiz={currentQuiz} />
+    <main>
       {view === 'welcome' && (
         <Welcome quizzes={quizzes} onSelect={startQuiz} />
       )}
@@ -130,7 +123,8 @@ My core rendering logic with my App file started off quite a bit more convoluted
           totalQuestions={currentQuiz.questions.length}
           onAnswerSubmit={handleAnswerSubmit}
           isLastQuestion={
-            currentQuestionIndex === currentQuiz.questions.length - 1}
+            currentQuestionIndex === currentQuiz.questions.length - 1
+          }
         />
       )}
 
@@ -142,22 +136,61 @@ My core rendering logic with my App file started off quite a bit more convoluted
           onRestart={resetQuiz}
         />
       )}
-      </main>
-    </>
-  );
+    </main>
+  </>
+);
 ```
+
+I had a lot of fun developing the method of generating the multiple-choice answer buttons. There's a good deal of conditional logic here that's handling the various states and styles. Building upon this structure, I'd like to include even more accessibility-focused attributes to improve the app's overall usability.
 
 ```js
+<div className="selection-container multiple-choice-answers">
+  {question.options.map((option, index) => {
+    const isSelected = selectedOption === option;
+    const isAnswer = option === question.answer;
+    const optionBtnClassName = clsx('button option-button', {
+      selected: isSelected,
+      correct: hasSubmitted && isAnswer,
+      incorrect: hasSubmitted && !isAnswer && isSelected,
+    });
 
+    return (
+      <Button
+        key={`${option}-${index}`}
+        onClick={() => handleSelectedOption(option)}
+        ariaDisabled={hasSubmitted ? 'true' : 'false'}
+        className={optionBtnClassName}>
+        <span className="option-letter">{letters[index]}</span>
+        <span className="option-text">{option}</span>
+        {hasSubmitted && isSelected && !isAnswer && (
+          <img
+            src={iconIncorrect}
+            alt=""
+            className="icon icon-feedback"
+          />
+        )}
+        {hasSubmitted && isAnswer && (
+          <img
+            src={iconCorrect}
+            alt=""
+            className="icon icon-feedback"
+          />
+        )}
+      </Button>
+    );
+  })}
+</div>
 ```
+
 ### Continued development
 
-Strictly speaking, this app did not need to be developed with React. In fact, this is the final project within the Frontend Masters JavaScript fundamentals path. But I've really come to enjoy working with React and didn't want to pass up an opportunity to keep experimenting and practicing. This was an extremely fun build and a project I'll certainly come back to and build upon in the future.
+Strictly speaking, this app did not need to be developed with React. In fact, this is the final project within the Frontend Masters JavaScript fundamentals path. But I've come to enjoy working with React so much that I didn't want to pass up an opportunity to keep practicing the craft. This was an extremely fun build and a project I'll certainly return to and build upon in the future.
 
 ### Useful resources
 
-- [clsx utility](https://www.npmjs.com/package/clsx) - A handy utility for handling className strings conditionally. I've used it in several projects now and now it's a go-to resource for me. 
-- [Frontend Mentor Learning Pahts](https://www.frontendmentor.io/learning-paths/) - As noted in the intro, this is a Frontend Mentor design. I can speak highly enough about the quality of Frontend Mentor and think their learning paths are some of the best, most thoughtfully developed roadmaps and learning materials. 
+- [clsx utility](https://www.npmjs.com/package/clsx) - A handy utility for handling className strings conditionally. I've used it in several projects, and now it's a go-to resource for me.
+- [Frontend Mentor Learning Pahts](https://www.frontendmentor.io/learning-paths/) - As noted in the intro, this is a Frontend Mentor design. I can't speak highly enough about the quality of the Frontend Mentor platform, and I think their learning paths are some of the best, most thoughtfully developed roadmaps and learning materials.
+- [Brad Travery](https://www.traversymedia.com/modern-react-from-the-beginning) - I'm a big fan of Brad's courses and have taken several over the years. This recently released React course looks like Brad's typical top quality and a great option for anyone looking to get started with the JS library.
 
 ## Author
 
@@ -168,4 +201,4 @@ Strictly speaking, this app did not need to be developed with React. In fact, th
 
 ## Acknowledgments
 
-There is no way to heap enough praise on [Bob Ziroll](https://scrimba.com/@bobziroll) and [Josh Comeau](https://www.joshwcomeau.com/). When it comes to learning React and some of the trickier parts of web development, there are no people I turn to more frequently. 
+There is no way to heap enough praise on [Bob Ziroll](https://scrimba.com/@bobziroll) and [Josh Comeau](https://www.joshwcomeau.com/). When it comes to learning React and some of the trickier parts of web development, there are no people I turn to more frequently.

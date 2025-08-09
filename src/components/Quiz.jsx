@@ -79,9 +79,9 @@ function Quiz({
           const isAnswer = option === question.answer;
           const optionBtnClassName = clsx('button option-button', {
             selected: isSelected,
-            correct: (hasSubmitted && isAnswer),
-            incorrect: (hasSubmitted && !isAnswer && isSelected),
-          })
+            correct: hasSubmitted && isAnswer,
+            incorrect: hasSubmitted && !isAnswer && isSelected,
+          });
 
           return (
             <Button
