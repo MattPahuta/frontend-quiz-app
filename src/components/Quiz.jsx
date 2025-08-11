@@ -60,7 +60,6 @@ function Quiz({
           </p>
           <h2 
             ref={questionRef}
-            tabIndex="-1"
             style={{ outline: 'none'}}
             className="quiz-question"
           >
@@ -114,7 +113,6 @@ function Quiz({
         <Button
           className="button btn-primary"
           onClick={hasSubmitted ? handleNext : handleSubmit}
-          ariaDisabled={'false'}
         >
           {hasSubmitted
             ? isLastQuestion
