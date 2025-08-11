@@ -506,7 +506,7 @@
     }
   }
 
-  button[aria-disabled='true'] {
+  button:disabled {
     cursor: not-allowed;
   }
 
@@ -542,9 +542,8 @@
     outline: 3px solid var(--clr-purple);
   }
 
-  button.option-button[aria-disabled='false']:hover .option-letter,
-  button.option-button[aria-disabled='false']:focus-visible
-    .option-letter {
+  button.option-button:hover .option-letter,
+  button.option-button:focus-visible .option-letter {
     background-color: var(--clr-light-purple);
     color: var(--clr-purple);
   }
@@ -557,7 +556,8 @@
   }
 
   button.option-button:focus-visible {
-    outline-color: var(--clr-purple);
+    outline-color: var(--clr-purple); 
+    outline-width: 3px;
   }
 
   button.option-button.selected {

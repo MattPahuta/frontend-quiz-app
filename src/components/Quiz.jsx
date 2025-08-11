@@ -87,7 +87,7 @@ function Quiz({
             <Button
               key={`${option}-${index}`}
               onClick={() => handleSelectedOption(option)}
-              ariaDisabled={hasSubmitted ? 'true' : 'false'}
+              isDisabled={hasSubmitted}
               className={optionBtnClassName}>
               <span className="option-letter">{letters[index]}</span>
               {option}

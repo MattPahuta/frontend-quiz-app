@@ -14,7 +14,7 @@ function App() {
 
   React.useEffect(() => {
     setQuizzes(quizzData.quizzes);
-  }, [quizzes]);
+  }, []);
 
 
   function startQuiz(quizTitle) {
