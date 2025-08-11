@@ -18,7 +18,7 @@ function Welcome({ quizzes, onSelect }) {
                 key={quiz.title}
                 onClick={() => onSelect(quiz.title)}
                 className="button cat-button"
-              >
+                ariaLabel={`Select ${quiz.title} category`}>
                 <CategoryBadge
                   icon={quiz.icon}
                   category={quiz.title}

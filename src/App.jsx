@@ -50,7 +50,7 @@ function App() {
   return (
     <>
       <Header currentQuiz={currentQuiz} />
-      <main role='main'>
+      <main>
       {view === 'welcome' && (
         <Welcome quizzes={quizzes} onSelect={startQuiz} />
       )}

@@ -90,7 +90,7 @@ function Quiz({
               ariaDisabled={hasSubmitted ? 'true' : 'false'}
               className={optionBtnClassName}>
               <span className="option-letter">{letters[index]}</span>
-              <span className="option-text">{option}</span>
+              {option}
               {hasSubmitted && isSelected && !isAnswer && (
                 <img
                   src={iconIncorrect}

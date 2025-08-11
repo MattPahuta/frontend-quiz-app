@@ -177,6 +177,10 @@
     transition: background-color 0.3s ease, background-image 0.3s ease,
       color 0.3s ease;
 
+    @media (prefers-reduced-motion: reduce) {
+      transition: none;
+    }
+
     @media (width > 64rem) {
       background-size: cover;
       background-position: center;
@@ -437,7 +441,8 @@
     height: 12px;
     border-radius: 50%;
     transition-property: left;
-    transition: 0.2s ease-in-out;
+    transition-duration: 0.2s;
+    transition-timing-function: ease-in-out;
     left: 4px;
     top: 4px;
   }

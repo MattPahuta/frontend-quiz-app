@@ -1,6 +1,6 @@
-function Button({ onClick, className, ariaDisabled, children}) {
+function Button({ onClick, className, ariaDisabled, ariaLabel, children}) {
   return (
-    <button className={className} onClick={onClick} aria-disabled={ariaDisabled}>
+    <button type="button" className={className} onClick={onClick} aria-label={ariaLabel} aria-disabled={ariaDisabled}>
       {children}
     </button>
   )

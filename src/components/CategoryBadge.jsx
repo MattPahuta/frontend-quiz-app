@@ -1,15 +1,15 @@
 function CategoryBadge({icon, category}) {
 
   return (
-    <div className="category-badge">
+    <span className="category-badge">
       <img 
         src={icon} 
         alt="" 
         className={`icon cat-${category.toLowerCase()}`}
         loading="lazy"
       />
-      <span>{category}</span>
-    </div>
+      <span aria-hidden="true">{category}</span>
+    </span>
   )
 }
 

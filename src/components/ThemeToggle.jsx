@@ -27,7 +27,6 @@ function ThemeToggle() {
           id="toggleDarkMode"
           className="toggle-dark-mode"
           role="switch"
-          aria-label="Dark mode toggle"
           onChange={toggleTheme}
           checked={theme === 'dark'}
           aria-checked={theme === 'dark'}
