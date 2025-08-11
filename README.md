@@ -42,8 +42,8 @@ Users should be able to:
 
 ### Links
 
-- Solution URL: [Add solution URL here](https://your-solution-url.com)
-- Live Site URL: [Add live site URL here](https://your-live-site-url.com)
+- Solution URL: [Add solution URL here](https://www.frontendmentor.io/solutions/responsive-frontend-quiz-app-using-react-MUCSgOzyJV)
+- Live Site URL: [Add live site URL here](https://ubiquitous-malasada-c772ef.netlify.app/)
 
 ## My process
 
@@ -158,10 +158,10 @@ I had a lot of fun developing the method of generating the multiple-choice answe
       <Button
         key={`${option}-${index}`}
         onClick={() => handleSelectedOption(option)}
-        ariaDisabled={hasSubmitted ? 'true' : 'false'}
+        isDisabled={hasSubmitted}
         className={optionBtnClassName}>
         <span className="option-letter">{letters[index]}</span>
-        <span className="option-text">{option}</span>
+        {option}
         {hasSubmitted && isSelected && !isAnswer && (
           <img
             src={iconIncorrect}
