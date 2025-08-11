@@ -440,16 +440,18 @@
     transition: 0.2s ease-in-out;
     left: 4px;
     top: 4px;
-
-    @media (width > 37.5rem) {
-      width: 20px;
-      height: 20px;
-    }
   }
 
   .toggle-dark-mode:checked::after {
     transform: translateX(12px);
-    @media (width > 37.5rem) {
+  }
+
+  @media (width > 37.5rem) {
+    .toggle-dark-mode::after {
+      width: 20px;
+      height: 20px;
+    }
+    .toggle-dark-mode:checked::after {
       transform: translateX(20px);
     }
   }
