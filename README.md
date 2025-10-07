@@ -42,8 +42,8 @@ Users should be able to:
 
 ### Links
 
-- Solution URL: [Add solution URL here](https://www.frontendmentor.io/solutions/responsive-frontend-quiz-app-using-react-MUCSgOzyJV)
-- Live Site URL: [Add live site URL here](https://ubiquitous-malasada-c772ef.netlify.app/)
+- [FEM solution page](https://www.frontendmentor.io/solutions/responsive-frontend-quiz-app-using-react-MUCSgOzyJV)
+- [Live site URL](https://ubiquitous-malasada-c772ef.netlify.app/)
 
 ## My process
 
@@ -54,7 +54,7 @@ Users should be able to:
 - Flexbox
 - CSS Grid
 - Mobile-first workflow
-- [React](https://reactjs.org/) - JS library
+- [React](https://reactjs.org/)
 
 Nothing groundbreaking with my CSS for this project. If I were to restart this project, I would likely use Tailwind for most of the styling as the design comp is fairly straightforward. However, as it stands, this project employs a basic pattern that I follow for most projects where I write the CSS from scratch: layers to help organize styles, heavy use of custom utility classes to enhance reusability, and leveraging newer CSS standards, such as nesting and simplified media query syntax.
 
