@@ -1,10 +1,10 @@
-import { useState, useRef, useEffect } from 'react';
-import Button from './Button';
-import iconCorrect from '../assets/icon-correct.svg';
-import iconIncorrect from '../assets/icon-incorrect.svg';
-import { clsx } from 'clsx';
+import { useState, useRef, useEffect } from "react";
+import Button from "./Button";
+import iconCorrect from "../assets/icon-correct.svg";
+import iconIncorrect from "../assets/icon-incorrect.svg";
+import clsx from "clsx";
 
-const letters = ['A', 'B', 'C', 'D'];
+const letters = ["A", "B", "C", "D"];
 
 function Quiz({
   quizTitle,
@@ -16,7 +16,7 @@ function Quiz({
 }) {
   const [selectedOption, setSelectedOption] = useState(null);
   const [hasSubmitted, setHasSubmitted] = useState(false);
-  const [feedbackMessage, setFeedbackMessage] = useState('');
+  const [feedbackMessage, setFeedbackMessage] = useState("");
   const [answeredCount, setAnsweredCount] = useState(questionIndex);
   const progressPercentage = (answeredCount / totalQuestions) * 100;
 
@@ -26,18 +26,18 @@ function Quiz({
     if (questionRef.current) {
       questionRef.current.focus();
     }
-  }, [questionIndex])
+  }, [questionIndex]);
 
   function handleSelectedOption(option) {
     if (!hasSubmitted) {
       setSelectedOption(option);
-      setFeedbackMessage('');
+      setFeedbackMessage("");
     }
   }
 
   function handleSubmit() {
     if (selectedOption === null) {
-      setFeedbackMessage('Please select an answer');
+      setFeedbackMessage("Please select an answer");
       return;
     }
     setHasSubmitted(true);
@@ -58,12 +58,8 @@ function Quiz({
           <p className="accent-text quiz-question-number">
             Question {questionIndex + 1} of {totalQuestions}
           </p>
-          <h2 
-            ref={questionRef}
-            style={{ outline: 'none'}}
-            className="quiz-question"
-          >
-              {question.question}
+          <h2 ref={questionRef} className="quiz-question">
+            {question.question}
           </h2>
         </div>
         <div className="progress-bar-wrapper">
@@ -76,7 +72,7 @@ function Quiz({
         {question.options.map((option, index) => {
           const isSelected = selectedOption === option;
           const isAnswer = option === question.answer;
-          const optionBtnClassName = clsx('button option-button', {
+          const optionBtnClassName = clsx("button option-button", {
             selected: isSelected,
             correct: hasSubmitted && isAnswer,
             incorrect: hasSubmitted && !isAnswer && isSelected,
@@ -112,13 +108,12 @@ function Quiz({
       <div className="quiz-action-container">
         <Button
           className="button btn-primary"
-          onClick={hasSubmitted ? handleNext : handleSubmit}
-        >
+          onClick={hasSubmitted ? handleNext : handleSubmit}>
           {hasSubmitted
             ? isLastQuestion
-              ? 'View Results'
-              : 'Next Question'
-            : 'Submit Answer'}
+              ? "View Results"
+              : "Next Question"
+            : "Submit Answer"}
         </Button>
         {feedbackMessage && (
           <div

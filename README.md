@@ -36,9 +36,11 @@ Users should be able to:
 
 ### Screenshot
 
-![](./project-ss-01.png)
-![](./project-ss-02.png)
-![](./project-ss-03.png)
+![](./src/assets/project-ss-01.jpg)
+
+![](./src/assets/project-ss-02.jpg)
+
+![](./src/assets/project-ss-03.jpg)
 
 ### Links
 

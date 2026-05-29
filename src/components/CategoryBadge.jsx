@@ -8,7 +8,7 @@ function CategoryBadge({icon, category}) {
         className={`icon cat-${category.toLowerCase()}`}
         loading="lazy"
       />
-      <span aria-hidden="true">{category}</span>
+      <span>{category}</span>
     </span>
   )
 }

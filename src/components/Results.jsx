@@ -1,8 +1,7 @@
 import Button from "./Button";
 import CategoryBadge from "./CategoryBadge";
 
-function Results({ quiz, score, totalQuestions, onRestart}) {
-  
+function Results({ quiz, score, totalQuestions, onRestart }) {
   return (
     <div className="wrapper grid-columns results-grid">
       <div className="quiz-info results-heading">
@@ -10,10 +9,7 @@ function Results({ quiz, score, totalQuestions, onRestart}) {
         <p>You scored...</p>
       </div>
       <div className="quiz-result">
-        <CategoryBadge 
-          icon={quiz.icon}
-          category={quiz.title}
-        />
+        <CategoryBadge icon={quiz.icon} category={quiz.title} />
         <div className="score-summary">
           <p className="final-score">
             <strong>{score}</strong> out of {totalQuestions}
@@ -21,10 +17,7 @@ function Results({ quiz, score, totalQuestions, onRestart}) {
         </div>
       </div>
       <div className="quiz-action-container">
-        <Button
-          className="button btn-primary"
-          onClick={onRestart}
-          ariaDisabled={'false'}>
+        <Button className="button btn-primary" onClick={onRestart}>
           Play Again
         </Button>
       </div>
