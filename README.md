@@ -197,9 +197,8 @@ Strictly speaking, this app did not need to be developed with React. In fact, th
 ## Author
 
 - Website - [Matt Pahuta](https://www.mattpahuta.com)
+- LinkedIn - [Matt Pahuta](https://www.linkedin.com/in/mattpahuta)
 - Frontend Mentor - [@mattpahuta](https://www.frontendmentor.io/profile/MattPahuta)
-- Bluesky - [@mattpahuta](https://bsky.app/profile/mattpahuta.bsky.social)
-- LinkedIn - [Matt Pahuta](www.linkedin.com/in/mattpahuta)
 
 ## Acknowledgments
 

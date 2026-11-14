@@ -4,7 +4,7 @@ import iconCorrect from "../assets/icon-correct.svg";
 import iconIncorrect from "../assets/icon-incorrect.svg";
 import clsx from "clsx";
 
-const letters = ["A", "B", "C", "D"];
+const LETTERS = ["A", "B", "C", "D"];
 
 function Quiz({
   quizTitle,
@@ -84,7 +84,7 @@ function Quiz({
               onClick={() => handleSelectedOption(option)}
               isDisabled={hasSubmitted}
               className={optionBtnClassName}>
-              <span className="option-letter">{letters[index]}</span>
+              <span className="option-letter">{LETTERS[index]}</span>
               {option}
               {hasSubmitted && isSelected && !isAnswer && (
                 <img
